@@ -336,7 +336,7 @@
     (dom/click button (fn [e]
                         (.preventDefault e)
                         (dom/rem-class button :loading)
-                        (u/timeout #(dom/add-class button :loading) 2000)))
+                        (util/timeout #(dom/add-class button :loading) 2000)))
     el))
 
 (def loading-indicators
@@ -358,7 +358,7 @@
                   (dom/click (fn [e el]
                                (dom/rem-class el :loading)
                                (.preventDefault e)
-                               (u/timeout #(dom/add-class el :loading) 2000))))]
+                               (util/timeout #(dom/add-class el :loading) 2000))))]
              [:div.div-loading.loading
               [:code "[:div.loading]"]]
              [:textarea.loading
