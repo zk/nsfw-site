@@ -370,7 +370,7 @@
               "        (dom/add-class el :bg-green)))\n"
               "    (dom/mouseout\n"
               "      (fn [e el]\n"
-              "        (dom/text el \"out\")\n"
+              "        (dom/text el \"mouseover me\")\n"
               "        (dom/rem-class el :bg-green))))"]
              (-> (dom/$ [:div "mouseover me"])
                  (dom/style {:text-align :center
