@@ -6,7 +6,8 @@
             [nsfw.storage :as storage]
             [nsfw.geo :as geo]
             [nsfw.components :as comp]
-            [cljs.reader :as reader]))
+            [cljs.reader :as reader]
+            [nsfw.ani :as ani]))
 
 (def icon-chars
   '{:snowman ☃
@@ -424,14 +425,34 @@
   (dom/$ [:div.container
           [:div.row
            [:div.span12
-            [:h2 "Templating"]]]]))
+            [:h2 "Templating"]]]
+          [:div.row
+           [:div.span6
+            [:p "Require " [:code "[nsfw.dom :as dom]"]]]]]))
 
+(def css3-transitions
+  (dom/$ [:div.container
+          [:div.row
+           [:div.span12
+            [:h2 "CSS3 Transitions"]
+            [:div.ani-example
+             (let [ball (dom/$ [:div.ball " "])]
+               (dom/style ball {:left "50%"
+                                :margin-left "-25px"})
+               (util/interval (fn []
+                               (ani/css ball :top 250))
+                             2000)
+               (util/timeout
+                #(util/interval (fn [] (ani/css ball :top 0)) 2000)
+                1000)
+               ball)]]]]))
 
 (def $body (dom/$ "body"))
 
 (-> $body
     (dom/append hero)
     (dom/append banner)
+    (dom/append css3-transitions)
     (dom/append basic-structure)
     (dom/append templating)
     (dom/append event-binding)
