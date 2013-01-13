@@ -183,7 +183,7 @@
   [:div.container
    [:div.row
     [:div.span12
-     [:h2 "Basic Structure"]]]
+     [:h2 "HTML"]]]
    html-section])
 
 (defn local-storage-example []
@@ -420,6 +420,12 @@
              [:textarea.loading
               "[:textarea.loading]"]]]]]))
 
+(def templating
+  (dom/$ [:div.container
+          [:div.row
+           [:div.span12
+            [:h2 "Templating"]]]]))
+
 
 (def $body (dom/$ "body"))
 
@@ -427,6 +433,7 @@
     (dom/append hero)
     (dom/append banner)
     (dom/append basic-structure)
+    (dom/append templating)
     (dom/append event-binding)
     (dom/append loading-indicators)
     (dom/append html5-storage)
