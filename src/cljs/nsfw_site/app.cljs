@@ -325,7 +325,63 @@
             [:h2 "Event Binding"]]]
           [:div.row
            [:div.span6
-            [:p "Require " [:code "[nsfw.dom :as dom]"]]]]]))
+            [:p "Require " [:code "[nsfw.dom :as dom]"]]
+            [:p
+             "Plain ol' event binding. All major event types like"
+             [:code "click"] ", " [:code "keyup"] ", and " [:code "mouseover"]
+             " are represented."
+             " These functions are built on "
+             [:code "dom/listen"] ":"]
+            [:pre
+             ";; Listen for submit action"
+             "\n"
+             "(dom/listen $el \"submit\" #(log \"submitted\"))"]
+            [:p
+             "Event callbacks take two parameters, a map representing the event "
+             "fired, and the bound DOM element."]
+            [:pre
+             ";; Handle callback\n"
+             (str '(dom/click $el (fn [e el] ...))) "\n\n"
+             ";;=>  e: {:type \"click\" :offset-x 123 ...}" "\n"
+             ";;=> el: $el"]
+            [:p
+             "See "
+             [:a {:href "http://code.google.com/p/closure-library/source/browse/trunk/closure/goog/events/browserevent.js#16"} "here"]
+             " for a full list of "
+             [:code "e"] "'s properties, which are translated from camel- to kebob-case."]]
+           [:div.span6
+            [:div.example
+             [:pre
+              "(def $el\n"
+              "  (-> (dom/$ [:a.btn.btn-block \"click\"])\n"
+              "      (dom/click (fn [e el]\n"
+              "                   (js/alert (pr-str e)))\n"]
+             (-> (dom/$ [:a.btn.btn-block "click"])
+                 (dom/click #(js/alert (pr-str %)))
+                 (dom/style {:margin-bottom :10px}))
+             [:pre
+              "(-> (dom/$ [:div \"mouseover me\"])\n"
+              "    (dom/style {:text-align :center\n"
+              "                :padding \"10px\"\n"
+              "                :background-color \"#eee\"})\n"
+              "    (dom/mouseover\n"
+              "      (fn [e el]\n"
+              "        (dom/text el \"over\")\n"
+              "        (dom/add-class el :bg-green)))\n"
+              "    (dom/mouseout\n"
+              "      (fn [e el]\n"
+              "        (dom/text el \"out\")\n"
+              "        (dom/rem-class el :bg-green))))"]
+             (-> (dom/$ [:div "mouseover me"])
+                 (dom/style {:text-align :center
+                             :padding "10px"
+                             :background-color "#eee"})
+                 (dom/mouseover (fn [e el]
+                                  (dom/text el "over!")
+                                  (dom/add-class el :bg-green)))
+                 (dom/mouseout (fn [e el]
+                                 (dom/text el "mouseover me")
+                                 (dom/rem-class el :bg-green))))]]]]))
 
 (defn button-example [cls]
   (let [button (dom/$ [:a {:class (str "btn loading " cls)}
@@ -334,7 +390,7 @@
                    [:label (str ".btn." cls ".loading")]
                    button])]
     (dom/click button (fn [e]
-                        (.preventDefault e)
+                        (dom/prevent e)
                         (dom/rem-class button :loading)
                         (util/timeout #(dom/add-class button :loading) 2000)))
     el))
@@ -357,7 +413,7 @@
               (-> (dom/$ [:a.btn.btn-block.loading ".btn.btn-block.loading"])
                   (dom/click (fn [e el]
                                (dom/rem-class el :loading)
-                               (.preventDefault e)
+                               (dom/prevent e)
                                (util/timeout #(dom/add-class el :loading) 2000))))]
              [:div.div-loading.loading
               [:code "[:div.loading]"]]
