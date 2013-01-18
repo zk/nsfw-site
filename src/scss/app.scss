@@ -1,6 +1,9 @@
-@import url(http://fonts.googleapis.com/css?family=Merriweather:400,700,300,900);
-@import url(http://fonts.googleapis.com/css?family=Crimson+Text:400,700);
-@import url(http://fonts.googleapis.com/css?family=Cardo:400,700);
+$stage-container: #fafafa;
+$stage-color: #fdfdfd;
+$stage-border: solid #eee 1px;
+$header-font: "Helvetica Neue", Helvetica, sans-serif;
+$copy-font: "Helvetica Neue", Helvetica, sans-serif;
+
 
 * {
   margin: 0px;
@@ -9,18 +12,60 @@
 }
 
 body, html {
-  font-family: "Helvetica Neue", Helvetica, sans-serif;
-  font-size: 14px;
+  font-family: $copy-font;
+  font-size: 16px;
   font-weight: normal;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: "Merriweather", serif;
+  font-family: $header-font;
 }
 
 body {
-  background-color: #FCF8F2;
+  //background-color: #FCF8F2;
+  background-color: #FEFEFE;
 }
+
+
+h2, h3, h4 {
+  margin-bottom: 10px;
+}
+
+h2 {
+  margin-top: 30px;
+  margin-bottom: 0px;
+}
+
+h3 {
+  margin-top: 20px;
+}
+
+p {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  line-height: 24px;
+}
+
+em {
+  font-weight: bold;
+  font-style: normal;
+}
+
+pre,
+code,
+textarea,
+input[type="text"] {
+  border-raidus: 0px;
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  border: $stage-border;
+}
+
+code {
+  padding-top: 1px;
+  padding-bottom: 1px;
+}
+
 
 .clear { clear: both; }
 
@@ -33,6 +78,7 @@ body {
   width: 40%;
   float: right;
   color: white;
+  font-family: $copy-font;
 }
 
 .hero-content h1,
@@ -42,9 +88,11 @@ body {
   margin-top: 0;
   margin-bottom: 20px;
   font-weight: normal;
+  font-family: $header-font;
 }
 
 .hero-link {
+  
   color: black;
   padding: 10px;
   padding-left: 10px;
@@ -56,9 +104,9 @@ body {
 }
 
 .hero-link:hover {
-  color: white;
   text-decoration: none;
   opacity: 1;
+  color: black;
 }
 
 .navbar h1 {
@@ -123,10 +171,6 @@ body {
   border-bottom: solid #ccc 1px;
   background-color: #eee;
   margin-bottom: 30px;
-}
-
-.navbar h1 {
-  font-weight: normal;
 }
 
 .icon-overview {
@@ -212,7 +256,9 @@ body {
   width: calc(100% - 20px);
   width: -webkit-calc(100% - 20px);
   width: -moz-calc(100% - 20px);
-
+  background-color: $stage-color;
+  border: none;
+  outline: none;
   height: 150px;
 }
 
@@ -223,7 +269,7 @@ body {
 }
 
 .html-vis {
-  background-color: white;
+  background-color: $stage-color;
   width: 100%;
   width: calc(100% - 20px);
   width: -webkit-calc(100% - 20px);
@@ -235,8 +281,6 @@ body {
   height: -webkit-calc(50% - 40px);
   height: -moz-calc(50% - 40px);
   padding: 10px;
-
-  border: dotted #e8e8e8 1px;
 }
 
 
@@ -244,51 +288,16 @@ body {
 }
 
 .example {
-  background-color: #fafafa;
+  background-color: $stage-container;
+  border: $stage-border;
   padding: 20px;
 }
 
 div.html-example {
 }
 
-h2, h3, h4 {
-  margin-bottom: 10px;
-}
-
-h2 {
-  margin-top: 30px;
-}
-
-h3 {
-  margin-top: 20px;
-}
-
-p {
-  margin-bottom: 10px;
-}
-
-pre,
-code,
-textarea,
-input[type="text"] {
-  border-raidus: 0px;
-  -webkit-border-radius: 0px;
-  -moz-border-radius: 0px;
-  border: solid #e8e8e8 1px;
-}
-
-code {
-  padding-top: 1px;
-  padding-bottom: 1px;
-}
-
 .container {
   margin-bottom: 40px;
-}
-
-em {
-  font-weight: bold;
-  font-style: normal;
 }
 
 .example h1,
@@ -299,6 +308,9 @@ em {
 .example h6 {
   margin: 0; 
   padding: 0;
+}
+
+.example pre {
 }
 
 input#my-key {
@@ -388,9 +400,9 @@ input#my-key {
 
 .ani-example {
   height: 300px;
-  border: solid #ccc 1px;
+  border: $stage-border;
   position: relative;
-  background-color: #fafafa;
+  background-color: $stage-color;
 }
 
 .ani-example .ball {
@@ -404,18 +416,60 @@ input#my-key {
   left: 0px;
 }
 
+.section {
+  
+}
+
 .section-link {
   font-size: 12px;
   font-weight: normal;
-  margin-left: -32px;
+  margin-left: -28px;
   -webkit-transform: rotate(-90deg) translate(7px);
   line-height: 10px;
   padding: 2px;
   display: inline-block;
   margin-top: -10px;
+  font-family: $copy-font;
 }
 
 .section-link:hover {
   text-decoration: none;
   background-color: #efefef;
+}
+
+.table-params-wrapper {
+
+  h3 {
+    margin: 0;
+  }
+  
+  padding: 20px;
+  background-color: white;
+}
+
+table.params {
+  width: 100%;
+  padding: 20px;
+  font-size: 12px;
+}
+
+table.params code {
+  font-size: 11px;
+}
+
+table.params th {
+  border-bottom: solid #ccc 1px;
+  padding-bottom: 5px;
+  text-align: left;
+  padding-left: 10px;
+}
+
+table.params td {
+  padding: 10px;
+  border-bottom: solid #eee 1px;
+  font-size: 12px;
+}
+
+.chart-result {
+  margin-right: 10px;
 }
