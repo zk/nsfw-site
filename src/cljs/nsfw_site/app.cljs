@@ -80,6 +80,8 @@
             [:p
              "NSFW is a set of libraries that provide you the basics for building "
              "modern webapps using HTML5, CSS3 and Clojurescript."]
+            [:p "Warning, super-extra alpha."]
+            [:br]
             (let [colors (cycle ["#00A8C6" "#40C0CB" "#AEE239" "#8FBE00"])]
               (->> ["HTML" "Templating" "Event Binding"
                     "Loading Indicators" "Local Storage"
