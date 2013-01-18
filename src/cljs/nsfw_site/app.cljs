@@ -83,7 +83,7 @@
             (let [colors (cycle ["#00A8C6" "#40C0CB" "#AEE239" "#8FBE00"])]
               (->> ["HTML" "Templating" "Event Binding"
                     "Loading Indicators" "Local Storage"
-                    "Mapping / Geolocation" "Bleed Box"]
+                    "Mapping / Geolocation" "Bleed Box" "Charting"]
                    (map (fn [color title]
                           [:a.hero-link {:href (str "#" (title->id title))
                                          :style (str "background-color: " color ";")}
@@ -507,7 +507,10 @@
     [:div.span5
      [:div.example
       [:pre
-       "(chart/bar [[10 39 54 12]] {:min 0 :max 100})\n\n"
+       ";; vertical bar graph\n"
+       "(chart/vbg [[10 39 54 12]]\n"
+       "           {:min 0 :max 100\n"
+       "            :left-labels [0 100]})\n\n"
        [:span.chart-result ";;=>"]
        (chart/vgb [[10 39 54 12]]
                   {:bg "ffffff00"
@@ -517,7 +520,7 @@
                    :max 100
                    :left-labels [0 100]})
        "\n\n\n"
-       "(chart/bar [{:data [10 39 54 12]\n"
+       "(chart/vbg [{:data [10 39 54 12]\n"
        "             :color \"ff0000\"\n"
        "             :legend \"cats\"}]\n"
        "           {:min 0 :max 100})\n\n"
@@ -529,22 +532,21 @@
                    :height 100
                    :width 200
                    :min 0
-                   :max 100
-                   :left-labels [0 100]})]]]]))
+                   :max 100})]]]]))
 
 (def $body (dom/$ "body"))
 
  (-> $body
     (dom/append hero)
     (dom/append banner)
-    (dom/append charts)
     #_(dom/append css3-transitions)
-    (dom/append animations)
     (dom/append html-section)
     (dom/append templating)
     (dom/append event-binding)
+    (dom/append animations)
     (dom/append loading-indicators)
     (dom/append html5-storage)
     (dom/append html5-geoloc)
     (dom/append bleed-box-example)
+    (dom/append charts)
     (dom/append [:div (repeat 10 [:br])]))
