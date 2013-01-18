@@ -33,15 +33,19 @@ h2, h3, h4 {
 
 h2 {
   margin-top: 30px;
-  margin-bottom: 0px;
+  margin-bottom: 20px;
 }
 
 h3 {
   margin-top: 20px;
 }
 
+h5 {
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
 p {
-  margin-top: 20px;
   margin-bottom: 10px;
   line-height: 24px;
 }
@@ -71,6 +75,15 @@ code {
 
 /* end bootstrap */
 
+a.header-brand {
+  color: white;
+}
+
+a.header-brand:hover {
+  color: white;
+  text-decoration: none;
+}
+
 
 .hero-content {
   padding: 40px;
@@ -92,7 +105,6 @@ code {
 }
 
 .hero-link {
-  
   color: black;
   padding: 10px;
   padding-left: 10px;
@@ -472,4 +484,11 @@ table.params td {
 
 .chart-result {
   margin-right: 10px;
+}
+
+
+@media screen and (max-width: 980px) {
+  .example pre {
+    font-size: 10px;
+  }
 }
