@@ -1,4 +1,5 @@
 #!/bin/sh
 
+lein cljsbuild clean
 lein cljsbuild once
 lein with-profile production compile :all
