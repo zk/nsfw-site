@@ -83,7 +83,7 @@
             [:p "Warning, super-extra alpha."]
             [:br]
             (let [colors (cycle ["#00A8C6" "#40C0CB" "#AEE239" "#8FBE00"])]
-              (->> ["HTML" "Templating" "Event Binding"
+              (->> ["Getting Started" "Templating" "Event Binding"
                     "Loading Indicators" "Local Storage"
                     "Mapping / Geolocation" "Bleed Box" "Charting"]
                    (map (fn [color title]
@@ -143,17 +143,17 @@
       (catch e
           [:div.err "Couldn't parse html."])))))
 
-(def html-section
+(def templating
   (let [a (atom [:div#my-div
                  [:h3.banner "hello world"]
                  [:ol
                   [:li "baz"]
                   [:li "bar"]]
                  [:input {:type "text" :placeholder "text here!"}]])]
-    (section "HTML"
+    (section "Templating"
              [:div.row
               [:div.span6
-               [:p "HTML is generated using code found in the "
+               [:p "DOM elements are generated using code found in the "
                 [:code "nsfw.dom"]
                 " clojurescript namespace."]
                [:p
@@ -175,7 +175,10 @@
                 [:code "$body"]
                 ", "
                 [:code "$open-button"]
-                ", etc."]]
+                ", etc."]
+               [:p
+                "Templates are functions that return a block of html, either as a "
+                "DOM element, or as a nested data structure representing a DOM element."]]
               [:div.span6
                [:div.example.html-example
                 (data-input a "[:div#my-div
@@ -412,16 +415,6 @@
       [:textarea.loading
        "[:textarea.loading]"]]]]))
 
-(def templating
-  (section
-   "Templating"
-   [:div.row
-    [:div.span6
-     [:p "Require " [:code "[nsfw.dom :as dom]"]]
-     [:p
-      "Templates are functions that return a block of html, either as a "
-      "DOM element, or as a nested data structure representing a DOM element."]]]))
-
 (defn fnt [name]
   [:code name])
 
@@ -536,13 +529,15 @@
                    :min 0
                    :max 100})]]]]))
 
+(def getting-started
+  (section "Getting Started"))
+
 (def $body (dom/$ "body"))
 
  (-> $body
     (dom/append hero)
     (dom/append banner)
-    #_(dom/append css3-transitions)
-    (dom/append html-section)
+    (dom/append getting-started)
     (dom/append templating)
     (dom/append event-binding)
     (dom/append animations)
