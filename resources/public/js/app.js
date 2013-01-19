@@ -27772,10 +27772,10 @@ nsfw.dom.wrap_content = function wrap_content(content) {
   }
 };
 nsfw.dom.append = function append(els, content) {
-  var G__2972_2974 = cljs.core.seq.call(null, nsfw.dom.ensure_coll.call(null, els));
+  var G__74817_74819 = cljs.core.seq.call(null, nsfw.dom.ensure_coll.call(null, els));
   while(true) {
-    if(G__2972_2974) {
-      var el_2975 = cljs.core.first.call(null, G__2972_2974);
+    if(G__74817_74819) {
+      var el_74820 = cljs.core.first.call(null, G__74817_74819);
       if(function() {
         var and__3822__auto__ = cljs.core.coll_QMARK_.call(null, content);
         if(and__3822__auto__) {
@@ -27784,23 +27784,23 @@ nsfw.dom.append = function append(els, content) {
           return and__3822__auto__
         }
       }()) {
-        var G__2973_2976 = cljs.core.seq.call(null, content);
+        var G__74818_74821 = cljs.core.seq.call(null, content);
         while(true) {
-          if(G__2973_2976) {
-            var c_2977 = cljs.core.first.call(null, G__2973_2976);
-            el_2975.appendChild(nsfw.dom.wrap_content.call(null, c_2977));
-            var G__2978 = cljs.core.next.call(null, G__2973_2976);
-            G__2973_2976 = G__2978;
+          if(G__74818_74821) {
+            var c_74822 = cljs.core.first.call(null, G__74818_74821);
+            el_74820.appendChild(nsfw.dom.wrap_content.call(null, c_74822));
+            var G__74823 = cljs.core.next.call(null, G__74818_74821);
+            G__74818_74821 = G__74823;
             continue
           }else {
           }
           break
         }
       }else {
-        el_2975.appendChild(nsfw.dom.wrap_content.call(null, content))
+        el_74820.appendChild(nsfw.dom.wrap_content.call(null, content))
       }
-      var G__2979 = cljs.core.next.call(null, G__2972_2974);
-      G__2972_2974 = G__2979;
+      var G__74824 = cljs.core.next.call(null, G__74817_74819);
+      G__74817_74819 = G__74824;
       continue
     }else {
     }
@@ -27810,13 +27810,13 @@ nsfw.dom.append = function append(els, content) {
 };
 nsfw.dom.apd = nsfw.dom.append;
 nsfw.dom.append_to = function append_to(child, parents) {
-  var G__2981_2982 = cljs.core.seq.call(null, nsfw.dom.ensure_coll.call(null, parents));
+  var G__74826_74827 = cljs.core.seq.call(null, nsfw.dom.ensure_coll.call(null, parents));
   while(true) {
-    if(G__2981_2982) {
-      var el_2983 = cljs.core.first.call(null, G__2981_2982);
-      nsfw.dom.append.call(null, el_2983, child);
-      var G__2984 = cljs.core.next.call(null, G__2981_2982);
-      G__2981_2982 = G__2984;
+    if(G__74826_74827) {
+      var el_74828 = cljs.core.first.call(null, G__74826_74827);
+      nsfw.dom.append.call(null, el_74828, child);
+      var G__74829 = cljs.core.next.call(null, G__74826_74827);
+      G__74826_74827 = G__74829;
       continue
     }else {
     }
@@ -27825,14 +27825,14 @@ nsfw.dom.append_to = function append_to(child, parents) {
   return child
 };
 nsfw.dom.style = function style(els, css_map) {
-  var jsobj_2987 = cljs.core.clj__GT_js.call(null, css_map);
-  var G__2986_2988 = cljs.core.seq.call(null, nsfw.dom.ensure_coll.call(null, els));
+  var jsobj_74832 = cljs.core.clj__GT_js.call(null, css_map);
+  var G__74831_74833 = cljs.core.seq.call(null, nsfw.dom.ensure_coll.call(null, els));
   while(true) {
-    if(G__2986_2988) {
-      var el_2989 = cljs.core.first.call(null, G__2986_2988);
-      goog.style.setStyle(el_2989, jsobj_2987);
-      var G__2990 = cljs.core.next.call(null, G__2986_2988);
-      G__2986_2988 = G__2990;
+    if(G__74831_74833) {
+      var el_74834 = cljs.core.first.call(null, G__74831_74833);
+      goog.style.setStyle(el_74834, jsobj_74832);
+      var G__74835 = cljs.core.next.call(null, G__74831_74833);
+      G__74831_74833 = G__74835;
       continue
     }else {
     }
@@ -27844,24 +27844,24 @@ nsfw.dom.size = function size(el) {
   return goog.style.getSize(el)
 };
 nsfw.dom.attrs = function attrs(els, m) {
-  var G__2993_2995 = cljs.core.seq.call(null, nsfw.dom.ensure_coll.call(null, els));
+  var G__74838_74840 = cljs.core.seq.call(null, nsfw.dom.ensure_coll.call(null, els));
   while(true) {
-    if(G__2993_2995) {
-      var el_2996 = cljs.core.first.call(null, G__2993_2995);
-      var G__2994_2997 = cljs.core.seq.call(null, cljs.core.keys.call(null, m));
+    if(G__74838_74840) {
+      var el_74841 = cljs.core.first.call(null, G__74838_74840);
+      var G__74839_74842 = cljs.core.seq.call(null, cljs.core.keys.call(null, m));
       while(true) {
-        if(G__2994_2997) {
-          var key_2998 = cljs.core.first.call(null, G__2994_2997);
-          el_2996.setAttribute(cljs.core.name.call(null, key_2998), cljs.core._lookup.call(null, m, key_2998, null));
-          var G__2999 = cljs.core.next.call(null, G__2994_2997);
-          G__2994_2997 = G__2999;
+        if(G__74839_74842) {
+          var key_74843 = cljs.core.first.call(null, G__74839_74842);
+          el_74841.setAttribute(cljs.core.name.call(null, key_74843), cljs.core._lookup.call(null, m, key_74843, null));
+          var G__74844 = cljs.core.next.call(null, G__74839_74842);
+          G__74839_74842 = G__74844;
           continue
         }else {
         }
         break
       }
-      var G__3000 = cljs.core.next.call(null, G__2993_2995);
-      G__2993_2995 = G__3000;
+      var G__74845 = cljs.core.next.call(null, G__74838_74840);
+      G__74838_74840 = G__74845;
       continue
     }else {
     }
@@ -27870,13 +27870,13 @@ nsfw.dom.attrs = function attrs(els, m) {
   return els
 };
 nsfw.dom.text = function text(els, text__$1) {
-  var G__3002_3003 = cljs.core.seq.call(null, nsfw.dom.ensure_coll.call(null, els));
+  var G__74847_74848 = cljs.core.seq.call(null, nsfw.dom.ensure_coll.call(null, els));
   while(true) {
-    if(G__3002_3003) {
-      var el_3004 = cljs.core.first.call(null, G__3002_3003);
-      goog.dom.setTextContent(el_3004, [cljs.core.str(text__$1)].join(""));
-      var G__3005 = cljs.core.next.call(null, G__3002_3003);
-      G__3002_3003 = G__3005;
+    if(G__74847_74848) {
+      var el_74849 = cljs.core.first.call(null, G__74847_74848);
+      goog.dom.setTextContent(el_74849, [cljs.core.str(text__$1)].join(""));
+      var G__74850 = cljs.core.next.call(null, G__74847_74848);
+      G__74847_74848 = G__74850;
       continue
     }else {
     }
@@ -27885,13 +27885,13 @@ nsfw.dom.text = function text(els, text__$1) {
   return els
 };
 nsfw.dom.replace = function replace(els, content) {
-  var G__3007 = cljs.core.seq.call(null, nsfw.dom.ensure_coll.call(null, els));
+  var G__74852 = cljs.core.seq.call(null, nsfw.dom.ensure_coll.call(null, els));
   while(true) {
-    if(G__3007) {
-      var el = cljs.core.first.call(null, G__3007);
+    if(G__74852) {
+      var el = cljs.core.first.call(null, G__74852);
       goog.dom.replaceNode(content, el);
-      var G__3008 = cljs.core.next.call(null, G__3007);
-      G__3007 = G__3008;
+      var G__74853 = cljs.core.next.call(null, G__74852);
+      G__74852 = G__74853;
       continue
     }else {
       return null
@@ -27900,13 +27900,13 @@ nsfw.dom.replace = function replace(els, content) {
   }
 };
 nsfw.dom.remove = function remove(els) {
-  var G__3010 = cljs.core.seq.call(null, nsfw.dom.ensure_coll.call(null, els));
+  var G__74855 = cljs.core.seq.call(null, nsfw.dom.ensure_coll.call(null, els));
   while(true) {
-    if(G__3010) {
-      var el = cljs.core.first.call(null, G__3010);
+    if(G__74855) {
+      var el = cljs.core.first.call(null, G__74855);
       goog.dom.removeNode(el);
-      var G__3011 = cljs.core.next.call(null, G__3010);
-      G__3010 = G__3011;
+      var G__74856 = cljs.core.next.call(null, G__74855);
+      G__74855 = G__74856;
       continue
     }else {
       return null
@@ -27915,13 +27915,13 @@ nsfw.dom.remove = function remove(els) {
   }
 };
 nsfw.dom.empty = function empty(els) {
-  var G__3013_3014 = cljs.core.seq.call(null, nsfw.dom.ensure_coll.call(null, els));
+  var G__74858_74859 = cljs.core.seq.call(null, nsfw.dom.ensure_coll.call(null, els));
   while(true) {
-    if(G__3013_3014) {
-      var el_3015 = cljs.core.first.call(null, G__3013_3014);
-      goog.dom.removeChildren(el_3015);
-      var G__3016 = cljs.core.next.call(null, G__3013_3014);
-      G__3013_3014 = G__3016;
+    if(G__74858_74859) {
+      var el_74860 = cljs.core.first.call(null, G__74858_74859);
+      goog.dom.removeChildren(el_74860);
+      var G__74861 = cljs.core.next.call(null, G__74858_74859);
+      G__74858_74859 = G__74861;
       continue
     }else {
     }
@@ -27930,34 +27930,34 @@ nsfw.dom.empty = function empty(els) {
   return els
 };
 nsfw.dom.add_class = function add_class(els, cls) {
-  var G__3018 = cljs.core.seq.call(null, nsfw.dom.ensure_coll.call(null, els));
+  var G__74863_74864 = cljs.core.seq.call(null, nsfw.dom.ensure_coll.call(null, els));
   while(true) {
-    if(G__3018) {
-      var el = cljs.core.first.call(null, G__3018);
-      goog.dom.classes.add(el, cljs.core.name.call(null, cls));
-      var G__3019 = cljs.core.next.call(null, G__3018);
-      G__3018 = G__3019;
+    if(G__74863_74864) {
+      var el_74865 = cljs.core.first.call(null, G__74863_74864);
+      goog.dom.classes.add(el_74865, cljs.core.name.call(null, cls));
+      var G__74866 = cljs.core.next.call(null, G__74863_74864);
+      G__74863_74864 = G__74866;
       continue
     }else {
-      return null
     }
     break
   }
+  return els
 };
 nsfw.dom.rem_class = function rem_class(els, cls) {
-  var G__3021 = cljs.core.seq.call(null, nsfw.dom.ensure_coll.call(null, els));
+  var G__74868_74869 = cljs.core.seq.call(null, nsfw.dom.ensure_coll.call(null, els));
   while(true) {
-    if(G__3021) {
-      var el = cljs.core.first.call(null, G__3021);
-      goog.dom.classes.remove(el, cljs.core.name.call(null, cls));
-      var G__3022 = cljs.core.next.call(null, G__3021);
-      G__3021 = G__3022;
+    if(G__74868_74869) {
+      var el_74870 = cljs.core.first.call(null, G__74868_74869);
+      goog.dom.classes.remove(el_74870, cljs.core.name.call(null, cls));
+      var G__74871 = cljs.core.next.call(null, G__74868_74869);
+      G__74868_74869 = G__74871;
       continue
     }else {
-      return null
     }
     break
   }
+  return els
 };
 nsfw.dom.body = nsfw.dom.$.call(null, "body");
 nsfw.dom.prevent = function prevent(e) {
@@ -27970,17 +27970,17 @@ nsfw.dom.onload = function onload(f) {
   return window.onload = f
 };
 nsfw.dom.listen = function listen(els, evt, f) {
-  var G__3025_3026 = cljs.core.seq.call(null, nsfw.dom.ensure_coll.call(null, els));
+  var G__74874_74875 = cljs.core.seq.call(null, nsfw.dom.ensure_coll.call(null, els));
   while(true) {
-    if(G__3025_3026) {
-      var el_3027 = cljs.core.first.call(null, G__3025_3026);
-      goog.events.listen(el_3027, cljs.core.name.call(null, evt), function(G__3025_3026, el_3027) {
-        return function(p1__3023_SHARP_) {
-          return f.call(null, nsfw.dom.ge__GT_map.call(null, p1__3023_SHARP_), el_3027)
+    if(G__74874_74875) {
+      var el_74876 = cljs.core.first.call(null, G__74874_74875);
+      goog.events.listen(el_74876, cljs.core.name.call(null, evt), function(G__74874_74875, el_74876) {
+        return function(p1__74872_SHARP_) {
+          return f.call(null, nsfw.dom.ge__GT_map.call(null, p1__74872_SHARP_), el_74876)
         }
-      }(G__3025_3026, el_3027));
-      var G__3028 = cljs.core.next.call(null, G__3025_3026);
-      G__3025_3026 = G__3028;
+      }(G__74874_74875, el_74876));
+      var G__74877 = cljs.core.next.call(null, G__74874_74875);
+      G__74874_74875 = G__74877;
       continue
     }else {
     }
@@ -28054,22 +28054,22 @@ nsfw.dom.focus = function() {
   return focus
 }();
 nsfw.dom.match_key = function match_key(els, key, f) {
-  var G__3030_3031 = cljs.core.seq.call(null, nsfw.dom.ensure_coll.call(null, els));
+  var G__74879_74880 = cljs.core.seq.call(null, nsfw.dom.ensure_coll.call(null, els));
   while(true) {
-    if(G__3030_3031) {
-      var el_3032 = cljs.core.first.call(null, G__3030_3031);
-      nsfw.dom.keyup.call(null, el_3032, function(G__3030_3031, el_3032) {
+    if(G__74879_74880) {
+      var el_74881 = cljs.core.first.call(null, G__74879_74880);
+      nsfw.dom.keyup.call(null, el_74881, function(G__74879_74880, el_74881) {
         return function(e) {
           var kc = e.keyCode;
           if(cljs.core._EQ_.call(null, key, kc)) {
-            return f.call(null, el_3032, nsfw.dom.val.call(null, el_3032))
+            return f.call(null, el_74881, nsfw.dom.val.call(null, el_74881))
           }else {
             return null
           }
         }
-      }(G__3030_3031, el_3032));
-      var G__3033 = cljs.core.next.call(null, G__3030_3031);
-      G__3030_3031 = G__3033;
+      }(G__74879_74880, el_74881));
+      var G__74882 = cljs.core.next.call(null, G__74879_74880);
+      G__74879_74880 = G__74882;
       continue
     }else {
     }
@@ -28078,19 +28078,19 @@ nsfw.dom.match_key = function match_key(els, key, f) {
   return els
 };
 nsfw.dom.val_changed = function val_changed(els, f) {
-  var G__3035_3036 = cljs.core.seq.call(null, nsfw.dom.ensure_coll.call(null, els));
+  var G__74884_74885 = cljs.core.seq.call(null, nsfw.dom.ensure_coll.call(null, els));
   while(true) {
-    if(G__3035_3036) {
-      var el_3037 = cljs.core.first.call(null, G__3035_3036);
-      var f_3038__$1 = function(G__3035_3036, el_3037) {
+    if(G__74884_74885) {
+      var el_74886 = cljs.core.first.call(null, G__74884_74885);
+      var f_74887__$1 = function(G__74884_74885, el_74886) {
         return function(e) {
-          return f.call(null, el_3037, nsfw.dom.val.call(null, el_3037))
+          return f.call(null, el_74886, nsfw.dom.val.call(null, el_74886))
         }
-      }(G__3035_3036, el_3037);
-      nsfw.dom.keyup.call(null, el_3037, f_3038__$1);
-      nsfw.dom.change.call(null, el_3037, f_3038__$1);
-      var G__3039 = cljs.core.next.call(null, G__3035_3036);
-      G__3035_3036 = G__3039;
+      }(G__74884_74885, el_74886);
+      nsfw.dom.keyup.call(null, el_74886, f_74887__$1);
+      nsfw.dom.change.call(null, el_74886, f_74887__$1);
+      var G__74888 = cljs.core.next.call(null, G__74884_74885);
+      G__74884_74885 = G__74888;
       continue
     }else {
     }
@@ -28099,11 +28099,11 @@ nsfw.dom.val_changed = function val_changed(els, f) {
   return els
 };
 nsfw.dom.on_enter = function on_enter(els, f) {
-  var G__3041_3042 = cljs.core.seq.call(null, nsfw.dom.ensure_coll.call(null, els));
+  var G__74890_74891 = cljs.core.seq.call(null, nsfw.dom.ensure_coll.call(null, els));
   while(true) {
-    if(G__3041_3042) {
-      var el_3043 = cljs.core.first.call(null, G__3041_3042);
-      nsfw.dom.keydown.call(null, el_3043, function(G__3041_3042, el_3043) {
+    if(G__74890_74891) {
+      var el_74892 = cljs.core.first.call(null, G__74890_74891);
+      nsfw.dom.keydown.call(null, el_74892, function(G__74890_74891, el_74892) {
         return function(e) {
           if(cljs.core._EQ_.call(null, 13, (new cljs.core.Keyword("\ufdd0'key-code")).call(null, e))) {
             nsfw.dom.prevent.call(null, e);
@@ -28113,9 +28113,9 @@ nsfw.dom.on_enter = function on_enter(els, f) {
             return null
           }
         }
-      }(G__3041_3042, el_3043));
-      var G__3044 = cljs.core.next.call(null, G__3041_3042);
-      G__3041_3042 = G__3044;
+      }(G__74890_74891, el_74892));
+      var G__74893 = cljs.core.next.call(null, G__74890_74891);
+      G__74890_74891 = G__74893;
       continue
     }else {
     }
@@ -28124,26 +28124,26 @@ nsfw.dom.on_enter = function on_enter(els, f) {
   return els
 };
 nsfw.dom.scroll_end = function scroll_end(els, f) {
-  var G__3046_3047 = cljs.core.seq.call(null, nsfw.dom.ensure_coll.call(null, els));
+  var G__74895_74896 = cljs.core.seq.call(null, nsfw.dom.ensure_coll.call(null, els));
   while(true) {
-    if(G__3046_3047) {
-      var el_3048 = cljs.core.first.call(null, G__3046_3047);
-      var timer_3049 = cljs.core.atom.call(null, -1);
-      nsfw.dom.listen.call(null, window, "scroll", function(G__3046_3047, timer_3049, el_3048) {
+    if(G__74895_74896) {
+      var el_74897 = cljs.core.first.call(null, G__74895_74896);
+      var timer_74898 = cljs.core.atom.call(null, -1);
+      nsfw.dom.listen.call(null, window, "scroll", function(G__74895_74896, timer_74898, el_74897) {
         return function(e) {
-          if(cljs.core.deref.call(null, timer_3049) > -1) {
-            nsfw.util.clear_timeout.call(null, cljs.core.deref.call(null, timer_3049))
+          if(cljs.core.deref.call(null, timer_74898) > -1) {
+            nsfw.util.clear_timeout.call(null, cljs.core.deref.call(null, timer_74898))
           }else {
           }
-          return cljs.core.reset_BANG_.call(null, timer_3049, nsfw.util.timeout.call(null, function(G__3046_3047, timer_3049, el_3048) {
+          return cljs.core.reset_BANG_.call(null, timer_74898, nsfw.util.timeout.call(null, function(G__74895_74896, timer_74898, el_74897) {
             return function() {
               return f.call(null, e)
             }
-          }(G__3046_3047, timer_3049, el_3048), 150))
+          }(G__74895_74896, timer_74898, el_74897), 150))
         }
-      }(G__3046_3047, timer_3049, el_3048));
-      var G__3050 = cljs.core.next.call(null, G__3046_3047);
-      G__3046_3047 = G__3050;
+      }(G__74895_74896, timer_74898, el_74897));
+      var G__74899 = cljs.core.next.call(null, G__74895_74896);
+      G__74895_74896 = G__74899;
       continue
     }else {
     }
@@ -31329,9 +31329,9 @@ nsfw_site.app.section = function() {
     return section__delegate.call(this, title, content)
   };
   section.cljs$lang$maxFixedArity = 1;
-  section.cljs$lang$applyTo = function(arglist__69825) {
-    var title = cljs.core.first(arglist__69825);
-    var content = cljs.core.rest(arglist__69825);
+  section.cljs$lang$applyTo = function(arglist__76309) {
+    var title = cljs.core.first(arglist__76309);
+    var content = cljs.core.rest(arglist__76309);
     return section__delegate(title, content)
   };
   section.cljs$lang$arity$variadic = section__delegate;
@@ -31348,9 +31348,9 @@ cljs.core.PersistentVector.fromArray(["\ufdd0'h3", "Get web stuff done with Cloj
 }()], true));
 nsfw_site.app.banner = nsfw.dom.$.call(null, cljs.core.PersistentVector.fromArray(["\ufdd0'div.post-bleed-banner", "Divider!"], true));
 nsfw_site.app.data_input = function() {
-  var data_input__delegate = function(atom, p__69826) {
-    var vec__69829 = p__69826;
-    var initial_value = cljs.core.nth.call(null, vec__69829, 0, null);
+  var data_input__delegate = function(atom, p__76310) {
+    var vec__76313 = p__76310;
+    var initial_value = cljs.core.nth.call(null, vec__76313, 0, null);
     var textarea = nsfw.dom.$.call(null, cljs.core.PersistentVector.fromArray(["\ufdd0'textarea", cljs.core.ObjMap.fromObject(["\ufdd0'spellcheck", "\ufdd0'rows"], {"\ufdd0'spellcheck":"false", "\ufdd0'rows":5}), function() {
       var or__3824__auto__ = initial_value;
       if(cljs.core.truth_(or__3824__auto__)) {
@@ -31364,13 +31364,13 @@ nsfw_site.app.data_input = function() {
       try {
         cljs.core.reset_BANG_.call(null, atom, cljs.reader.read_string.call(null, nsfw.dom.val.call(null, textarea)));
         return nsfw.dom.rem_class.call(null, textarea, "\ufdd0'error")
-      }catch(e69830) {
-        if(cljs.core.instance_QMARK_.call(null, Error, e69830)) {
-          var e = e69830;
+      }catch(e76314) {
+        if(cljs.core.instance_QMARK_.call(null, Error, e76314)) {
+          var e = e76314;
           return nsfw.dom.add_class.call(null, textarea, "\ufdd0'error")
         }else {
           if("\ufdd0'else") {
-            throw e69830;
+            throw e76314;
           }else {
             return null
           }
@@ -31381,17 +31381,17 @@ nsfw_site.app.data_input = function() {
     return el
   };
   var data_input = function(atom, var_args) {
-    var p__69826 = null;
+    var p__76310 = null;
     if(goog.isDef(var_args)) {
-      p__69826 = cljs.core.array_seq(Array.prototype.slice.call(arguments, 1), 0)
+      p__76310 = cljs.core.array_seq(Array.prototype.slice.call(arguments, 1), 0)
     }
-    return data_input__delegate.call(this, atom, p__69826)
+    return data_input__delegate.call(this, atom, p__76310)
   };
   data_input.cljs$lang$maxFixedArity = 1;
-  data_input.cljs$lang$applyTo = function(arglist__69831) {
-    var atom = cljs.core.first(arglist__69831);
-    var p__69826 = cljs.core.rest(arglist__69831);
-    return data_input__delegate(atom, p__69826)
+  data_input.cljs$lang$applyTo = function(arglist__76315) {
+    var atom = cljs.core.first(arglist__76315);
+    var p__76310 = cljs.core.rest(arglist__76315);
+    return data_input__delegate(atom, p__76310)
   };
   data_input.cljs$lang$arity$variadic = data_input__delegate;
   return data_input
@@ -31427,14 +31427,14 @@ nsfw_site.app.local_storage_example = function local_storage_example() {
       nsfw.storage.lset_BANG_.call(null, "\ufdd0'my-key", cljs.reader.read_string.call(null, nsfw.dom.val.call(null, input)));
       nsfw.dom.text.call(null, output, cljs.core.pr_str.call(null, (new cljs.core.Keyword("\ufdd0'my-key")).call(null, nsfw.storage.local)));
       return nsfw.dom.rem_class.call(null, input, "\ufdd0'error")
-    }catch(e69833) {
-      if(cljs.core.instance_QMARK_.call(null, Object, e69833)) {
-        var e__$1 = e69833;
+    }catch(e76317) {
+      if(cljs.core.instance_QMARK_.call(null, Object, e76317)) {
+        var e__$1 = e76317;
         nsfw.dom.add_class.call(null, input, "\ufdd0'error");
         throw e__$1;
       }else {
         if("\ufdd0'else") {
-          throw e69833;
+          throw e76317;
         }else {
           return null
         }
@@ -31456,10 +31456,10 @@ nsfw_site.app.html5_geoloc = nsfw_site.app.section.call(null, "Mapping / Geoloca
     var btn = nsfw.dom.$.call(null, cljs.core.PersistentVector.fromArray(["\ufdd0'a.btn", "Zoom To My Location"], true));
     return nsfw.dom.click.call(null, btn, function(e) {
       nsfw.dom.add_class.call(null, btn, "\ufdd0'loading");
-      return nsfw.geo.pos.call(null, function(p__69834) {
-        var map__69835 = p__69834;
-        var map__69835__$1 = cljs.core.seq_QMARK_.call(null, map__69835) ? cljs.core.apply.call(null, cljs.core.hash_map, map__69835) : map__69835;
-        var latlng = cljs.core._lookup.call(null, map__69835__$1, "\ufdd0'latlng", null);
+      return nsfw.geo.pos.call(null, function(p__76318) {
+        var map__76319 = p__76318;
+        var map__76319__$1 = cljs.core.seq_QMARK_.call(null, map__76319) ? cljs.core.apply.call(null, cljs.core.hash_map, map__76319) : map__76319;
+        var latlng = cljs.core._lookup.call(null, map__76319__$1, "\ufdd0'latlng", null);
         nsfw.dom.rem_class.call(null, btn, "\ufdd0'loading");
         nsfw.geo.center.call(null, map, latlng);
         return nsfw.geo.zoom.call(null, map, 10)
@@ -31477,8 +31477,8 @@ nsfw_site.app.event_binding = nsfw_site.app.section.call(null, "Event Binding", 
 "click"], true), ", ", cljs.core.PersistentVector.fromArray(["\ufdd0'code", "keyup"], true), ", and ", cljs.core.PersistentVector.fromArray(["\ufdd0'code", "mouseover"], true), " are represented.", " These functions are built on ", cljs.core.PersistentVector.fromArray(["\ufdd0'code", "dom/listen"], true), ":"], true), cljs.core.PersistentVector.fromArray(["\ufdd0'pre", ";; Listen for submit action", "\n", '(dom/listen $el "submit" #(log "submitted"))'], true), cljs.core.PersistentVector.fromArray(["\ufdd0'p", 
 "Event callbacks take two parameters, a map representing the event ", "fired, and the bound DOM element."], true), cljs.core.PersistentVector.fromArray(["\ufdd0'pre", ";; Handle callback\n", [cljs.core.str(cljs.core.with_meta(cljs.core.list("\ufdd1'dom/click", "\ufdd1'$el", cljs.core.with_meta(cljs.core.list("\ufdd1'fn", cljs.core.vec(["\ufdd1'e", "\ufdd1'el"]), "\ufdd1'..."), cljs.core.hash_map("\ufdd0'line", 293))), cljs.core.hash_map("\ufdd0'line", 293)))].join(""), "\n\n", ';;=>  e: {:type "click" :offset-x 123 ...}', 
 "\n", ";;=> el: $el"], true), cljs.core.PersistentVector.fromArray(["\ufdd0'p", "See ", cljs.core.PersistentVector.fromArray(["\ufdd0'a", cljs.core.ObjMap.fromObject(["\ufdd0'href"], {"\ufdd0'href":"http://code.google.com/p/closure-library/source/browse/trunk/closure/goog/events/browserevent.js#16"}), "here"], true), " for a full list of ", cljs.core.PersistentVector.fromArray(["\ufdd0'code", "e"], true), "'s properties, which are translated from camel- to kebob-case."], true)], true), cljs.core.PersistentVector.fromArray(["\ufdd0'div.span6", 
-cljs.core.PersistentVector.fromArray(["\ufdd0'div.example", cljs.core.PersistentVector.fromArray(["\ufdd0'pre", "(def $el\n", '  (-> (dom/$ [:a.btn.btn-block "click"])\n', "      (dom/click (fn [e el]\n", "                   (js/alert (pr-str e)))\n"], true), nsfw.dom.style.call(null, nsfw.dom.click.call(null, nsfw.dom.$.call(null, cljs.core.PersistentVector.fromArray(["\ufdd0'a.btn.btn-block", "click"], true)), function(p1__69836_SHARP_) {
-  return alert(cljs.core.pr_str.call(null, p1__69836_SHARP_))
+cljs.core.PersistentVector.fromArray(["\ufdd0'div.example", cljs.core.PersistentVector.fromArray(["\ufdd0'pre", "(def $el\n", '  (-> (dom/$ [:a.btn.btn-block "click"])\n', "      (dom/click (fn [e el]\n", "                   (js/alert (pr-str e)))\n"], true), nsfw.dom.style.call(null, nsfw.dom.click.call(null, nsfw.dom.$.call(null, cljs.core.PersistentVector.fromArray(["\ufdd0'a.btn.btn-block", "click"], true)), function(p1__76320_SHARP_) {
+  return alert(cljs.core.pr_str.call(null, p1__76320_SHARP_))
 }), cljs.core.ObjMap.fromObject(["\ufdd0'margin-bottom"], {"\ufdd0'margin-bottom":"\ufdd0'10px"})), cljs.core.PersistentVector.fromArray(["\ufdd0'pre", '(-> (dom/$ [:div "mouseover me"])\n', "    (dom/style {:text-align :center\n", '                :padding "10px"\n', '                :background-color "#eee"})\n', "    (dom/mouseover\n", "      (fn [e el]\n", '        (dom/text el "over")\n', "        (dom/add-class el :bg-green)))\n", "    (dom/mouseout\n", "      (fn [e el]\n", '        (dom/text el "mouseover me")\n', 
 "        (dom/rem-class el :bg-green))))"], true), nsfw.dom.mouseout.call(null, nsfw.dom.mouseover.call(null, nsfw.dom.style.call(null, nsfw.dom.$.call(null, cljs.core.PersistentVector.fromArray(["\ufdd0'div", "mouseover me"], true)), cljs.core.ObjMap.fromObject(["\ufdd0'text-align", "\ufdd0'padding", "\ufdd0'background-color"], {"\ufdd0'text-align":"\ufdd0'center", "\ufdd0'padding":"10px", "\ufdd0'background-color":"#eee"})), function(e, el) {
   nsfw.dom.text.call(null, el, "over!");
@@ -31527,20 +31527,20 @@ nsfw_site.app.rand_data = function rand_data(n) {
   })
 };
 nsfw_site.app.chart_param = function chart_param(type, examples, notes, default$) {
-  return cljs.core.PersistentVector.fromArray(["\ufdd0'tr", cljs.core.PersistentVector.fromArray(["\ufdd0'td", cljs.core.PersistentVector.fromArray(["\ufdd0'code", type], true)], true), cljs.core.PersistentVector.fromArray(["\ufdd0'td", cljs.core.interpose.call(null, ", ", cljs.core.map.call(null, function(p1__69837_SHARP_) {
-    return cljs.core.vector.call(null, "\ufdd0'code", cljs.core.pr_str.call(null, p1__69837_SHARP_))
+  return cljs.core.PersistentVector.fromArray(["\ufdd0'tr", cljs.core.PersistentVector.fromArray(["\ufdd0'td", cljs.core.PersistentVector.fromArray(["\ufdd0'code", type], true)], true), cljs.core.PersistentVector.fromArray(["\ufdd0'td", cljs.core.interpose.call(null, ", ", cljs.core.map.call(null, function(p1__76321_SHARP_) {
+    return cljs.core.vector.call(null, "\ufdd0'code", cljs.core.pr_str.call(null, p1__76321_SHARP_))
   }, examples))], true), cljs.core.PersistentVector.fromArray(["\ufdd0'td", notes], true), cljs.core.PersistentVector.fromArray(["\ufdd0'td", cljs.core.PersistentVector.fromArray(["\ufdd0'code", cljs.core.pr_str.call(null, default$)], true)], true)], true)
 };
 nsfw_site.app.charts = nsfw_site.app.section.call(null, "Charting", cljs.core.PersistentVector.fromArray(["\ufdd0'div.row", cljs.core.PersistentVector.fromArray(["\ufdd0'div.span5", cljs.core.PersistentVector.fromArray(["\ufdd0'p", "Require ", cljs.core.PersistentVector.fromArray(["\ufdd0'code", "[nsfw.chart :as chart]"], true)], true), cljs.core.PersistentVector.fromArray(["\ufdd0'p", "Provides a basic wrapper around Google image charts."], true), cljs.core.PersistentVector.fromArray(["\ufdd0'div.example", 
 cljs.core.PersistentVector.fromArray(["\ufdd0'pre", "(chart/line [{:data [1 2 4 8 16 32]\n", '              :color "ff0000"}]\n', "            ;; chart params\n", '            {:bg "ffffff00"})\n', "\n\n", cljs.core.PersistentVector.fromArray(["\ufdd0'span.chart-result", ";;=>"], true), nsfw.chart.line.call(null, cljs.core.PersistentVector.fromArray([cljs.core.ObjMap.fromObject(["\ufdd0'data", "\ufdd0'color"], {"\ufdd0'data":cljs.core.PersistentVector.fromArray([1, 2, 4, 8, 16, 32], true), "\ufdd0'color":"0000ff"})], 
 true), cljs.core.ObjMap.fromObject(["\ufdd0'bg", "\ufdd0'width", "\ufdd0'height", "\ufdd0'left-labels"], {"\ufdd0'bg":"ffffff00", "\ufdd0'width":290, "\ufdd0'height":100, "\ufdd0'left-labels":cljs.core.PersistentVector.fromArray([0, 16, 32], true)}))], true)], true)], true), cljs.core.PersistentVector.fromArray(["\ufdd0'div.span7", cljs.core.PersistentVector.fromArray(["\ufdd0'div.table-params-wrapper", cljs.core.PersistentVector.fromArray(["\ufdd0'h4", "Chart Params"], true), cljs.core.PersistentVector.fromArray(["\ufdd0'table.params", 
-cljs.core.PersistentVector.fromArray(["\ufdd0'tr", cljs.core.PersistentVector.fromArray(["\ufdd0'th", "key"], true), cljs.core.PersistentVector.fromArray(["\ufdd0'th", "examples"], true), cljs.core.PersistentVector.fromArray(["\ufdd0'th", "notes"], true), cljs.core.PersistentVector.fromArray(["\ufdd0'th", "default"], true)], true), cljs.core.map.call(null, function(p1__69838_SHARP_) {
-  return cljs.core.apply.call(null, nsfw_site.app.chart_param, p1__69838_SHARP_)
+cljs.core.PersistentVector.fromArray(["\ufdd0'tr", cljs.core.PersistentVector.fromArray(["\ufdd0'th", "key"], true), cljs.core.PersistentVector.fromArray(["\ufdd0'th", "examples"], true), cljs.core.PersistentVector.fromArray(["\ufdd0'th", "notes"], true), cljs.core.PersistentVector.fromArray(["\ufdd0'th", "default"], true)], true), cljs.core.map.call(null, function(p1__76322_SHARP_) {
+  return cljs.core.apply.call(null, nsfw_site.app.chart_param, p1__76322_SHARP_)
 }, cljs.core.PersistentVector.fromArray([cljs.core.PersistentVector.fromArray(["\ufdd0'bg", cljs.core.PersistentVector.fromArray(["ff0000aa"], true), "4th byte specifies opacity", "ffffffff"], true), cljs.core.PersistentVector.fromArray(["\ufdd0'max", cljs.core.PersistentVector.fromArray([100, 200], true), "y-axis maximum", null], true), cljs.core.PersistentVector.fromArray(["\ufdd0'min", cljs.core.PersistentVector.fromArray([0, -10, 10], true), "y-axis minimum", null], true), cljs.core.PersistentVector.fromArray(["\ufdd0'title", 
 cljs.core.PersistentVector.fromArray(["deploys"], true), "chart title", null], true), cljs.core.PersistentVector.fromArray(["\ufdd0'left-labels", cljs.core.PersistentVector.fromArray([cljs.core.PersistentVector.fromArray([0, 16, 32], true)], true), "seq of numbers", null], true)], true))], true)], true)], true)], true), cljs.core.PersistentVector.fromArray(["\ufdd0'div.row", cljs.core.PersistentVector.fromArray(["\ufdd0'div.span12", cljs.core.PersistentVector.fromArray(["\ufdd0'h3", "Data Sets"], 
 true)], true), cljs.core.PersistentVector.fromArray(["\ufdd0'div.span7", cljs.core.PersistentVector.fromArray(["\ufdd0'p", "Data sets can be passed in directly as vectors, in which case ", "they'll be rendered using the default data set parameters. Pass ", "in a map to modify default data sets display parameters."], true), cljs.core.PersistentVector.fromArray(["\ufdd0'h4", "Data Set Params"], true), cljs.core.PersistentVector.fromArray(["\ufdd0'table.params", cljs.core.PersistentVector.fromArray(["\ufdd0'tr", 
-cljs.core.PersistentVector.fromArray(["\ufdd0'th", "key"], true), cljs.core.PersistentVector.fromArray(["\ufdd0'th", "examples"], true), cljs.core.PersistentVector.fromArray(["\ufdd0'th", "notes"], true), cljs.core.PersistentVector.fromArray(["\ufdd0'th", "default"], true)], true), cljs.core.map.call(null, function(p1__69839_SHARP_) {
-  return cljs.core.apply.call(null, nsfw_site.app.chart_param, p1__69839_SHARP_)
+cljs.core.PersistentVector.fromArray(["\ufdd0'th", "key"], true), cljs.core.PersistentVector.fromArray(["\ufdd0'th", "examples"], true), cljs.core.PersistentVector.fromArray(["\ufdd0'th", "notes"], true), cljs.core.PersistentVector.fromArray(["\ufdd0'th", "default"], true)], true), cljs.core.map.call(null, function(p1__76323_SHARP_) {
+  return cljs.core.apply.call(null, nsfw_site.app.chart_param, p1__76323_SHARP_)
 }, cljs.core.PersistentVector.fromArray([cljs.core.PersistentVector.fromArray(["\ufdd0'data", cljs.core.PersistentVector.fromArray([cljs.core.PersistentVector.fromArray([20, 53, 12, 19], true)], true), "vector of values", null], true), cljs.core.PersistentVector.fromArray(["\ufdd0'color", cljs.core.PersistentVector.fromArray(["ff0000aa"], true), "4th byte is opacity", "000000"], true), cljs.core.PersistentVector.fromArray(["\ufdd0'legend", cljs.core.PersistentVector.fromArray(["memes"], true), "legend title", 
 null], true)], true))], true)], true), cljs.core.PersistentVector.fromArray(["\ufdd0'div.span5", cljs.core.PersistentVector.fromArray(["\ufdd0'div.example", cljs.core.PersistentVector.fromArray(["\ufdd0'pre", ";; vertical bar graph\n", "(chart/vbg [[10 39 54 12]]\n", "           {:min 0 :max 100\n", "            :left-labels [0 100]})\n\n", cljs.core.PersistentVector.fromArray(["\ufdd0'span.chart-result", ";;=>"], true), nsfw.chart.vgb.call(null, cljs.core.PersistentVector.fromArray([cljs.core.PersistentVector.fromArray([10, 
 39, 54, 12], true)], true), cljs.core.ObjMap.fromObject(["\ufdd0'bg", "\ufdd0'height", "\ufdd0'width", "\ufdd0'min", "\ufdd0'max", "\ufdd0'left-labels"], {"\ufdd0'bg":"ffffff00", "\ufdd0'height":100, "\ufdd0'width":200, "\ufdd0'min":0, "\ufdd0'max":100, "\ufdd0'left-labels":cljs.core.PersistentVector.fromArray([0, 100], true)})), "\n\n\n", "(chart/vbg [{:data [10 39 54 12]\n", '             :color "ff0000"\n', '             :legend "cats"}]\n', "           {:min 0 :max 100})\n\n", cljs.core.PersistentVector.fromArray(["\ufdd0'span.chart-result", 
@@ -31548,11 +31548,17 @@ null], true)], true))], true)], true), cljs.core.PersistentVector.fromArray(["\u
 true)], true)], true)], true));
 nsfw_site.app.getting_started = nsfw_site.app.section.call(null, "Getting Started");
 nsfw_site.app.$body = nsfw.dom.$.call(null, "body");
-nsfw_site.app.mouseover_image = function mouseover_image(src, text) {
-  return cljs.core.PersistentVector.fromArray(["\ufdd0'div.mouseover-image", cljs.core.PersistentVector.fromArray(["\ufdd0'img", cljs.core.ObjMap.fromObject(["\ufdd0'src"], {"\ufdd0'src":src})], true), cljs.core.PersistentVector.fromArray(["\ufdd0'span", text], true)], true)
+nsfw_site.app.rollover_image = function rollover_image(src, text) {
+  var span = nsfw.dom.$.call(null, cljs.core.PersistentVector.fromArray(["\ufdd0'span.a50", text], true));
+  nsfw.dom.mouseout.call(null, span, function() {
+    return nsfw.dom.rem_class.call(null, nsfw.dom.add_class.call(null, span, "\ufdd0'fadeOut"), "\ufdd0'fadeIn")
+  });
+  return nsfw.dom.mouseover.call(null, nsfw.dom.$.call(null, cljs.core.PersistentVector.fromArray(["\ufdd0'div.mouseover-image", cljs.core.PersistentVector.fromArray(["\ufdd0'img", cljs.core.ObjMap.fromObject(["\ufdd0'src"], {"\ufdd0'src":src})], true), span], true)), function() {
+    return nsfw.dom.rem_class.call(null, nsfw.dom.add_class.call(null, span, "\ufdd0'fadeIn"), "\ufdd0'fadeOut")
+  })
 };
-nsfw_site.app.design = nsfw_site.app.section.call(null, "Designy Things", cljs.core.PersistentVector.fromArray(["\ufdd0'div.container.design", cljs.core.PersistentVector.fromArray(["\ufdd0'div.row", cljs.core.PersistentVector.fromArray(["\ufdd0'div.span5", cljs.core.PersistentVector.fromArray(["\ufdd0'p", "As developers, no longer can we ignore basic design principles when writing software."], true)], true), cljs.core.PersistentVector.fromArray(["\ufdd0'div.span7.grid-images", nsfw_site.app.mouseover_image.call(null, 
-"http://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Grid2aib.svg/250px-Grid2aib.svg.png", "Grids"), nsfw_site.app.mouseover_image.call(null, "http://f.cl.ly/items/0T1a2j330V3V3t3x0e18/Screen%20Shot%202013-01-18%20at%205.33.34%20PM.png", "Typography"), nsfw_site.app.mouseover_image.call(null, "http://f.cl.ly/items/1U0J0J300b110z0R0S02/Screen%20Shot%202013-01-18%20at%205.32.09%20PM.png", "Whitespace")], true)], true), cljs.core.PersistentVector.fromArray(["\ufdd0'div.row.grids", cljs.core.PersistentVector.fromArray(["\ufdd0'div.span12", 
+nsfw_site.app.design = nsfw_site.app.section.call(null, "Designy Things", cljs.core.PersistentVector.fromArray(["\ufdd0'div.container.design", cljs.core.PersistentVector.fromArray(["\ufdd0'div.row", cljs.core.PersistentVector.fromArray(["\ufdd0'div.span5", cljs.core.PersistentVector.fromArray(["\ufdd0'p", "As developers, we can no longer ignore basic design principles when writing software."], true)], true), cljs.core.PersistentVector.fromArray(["\ufdd0'div.span7.grid-images", nsfw_site.app.rollover_image.call(null, 
+"http://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Grid2aib.svg/250px-Grid2aib.svg.png", "Grids"), nsfw_site.app.rollover_image.call(null, "http://f.cl.ly/items/0T1a2j330V3V3t3x0e18/Screen%20Shot%202013-01-18%20at%205.33.34%20PM.png", "Typography"), nsfw_site.app.rollover_image.call(null, "http://f.cl.ly/items/1U0J0J300b110z0R0S02/Screen%20Shot%202013-01-18%20at%205.32.09%20PM.png", "Whitespace")], true)], true), cljs.core.PersistentVector.fromArray(["\ufdd0'div.row.grids", cljs.core.PersistentVector.fromArray(["\ufdd0'div.span12", 
 cljs.core.PersistentVector.fromArray(["\ufdd0'h4", "Grids"], true), cljs.core.PersistentVector.fromArray(["\ufdd0'div.row", cljs.core.PersistentVector.fromArray(["\ufdd0'div.span5", "foo"], true), cljs.core.PersistentVector.fromArray(["\ufdd0'div.span7"], true)], true)], true)], true), cljs.core.PersistentVector.fromArray(["\ufdd0'div.row", cljs.core.PersistentVector.fromArray(["\ufdd0'div.span12", cljs.core.PersistentVector.fromArray(["\ufdd0'h4", "Whitespace"], true)], true)], true), cljs.core.PersistentVector.fromArray(["\ufdd0'div.row", 
 cljs.core.PersistentVector.fromArray(["\ufdd0'div.span12", cljs.core.PersistentVector.fromArray(["\ufdd0'h4", "Paragraph Widths"], true), cljs.core.PersistentVector.fromArray(["\ufdd0'p", "Paragraph line widths should be between ", cljs.core.PersistentVector.fromArray(["\ufdd0'em", "45 and 75 characters"], true), ". ", cljs.core.PersistentVector.fromArray(["\ufdd0'a", cljs.core.ObjMap.fromObject(["\ufdd0'href"], {"\ufdd0'href":"http://trentwalton.com/2013/01/07/flexible-foundations/"}), "link"], 
 true)], true)], true)], true), cljs.core.PersistentVector.fromArray(["\ufdd0'div.row", cljs.core.PersistentVector.fromArray(["\ufdd0'div.span6.para-width-ex", cljs.core.PersistentVector.fromArray(["\ufdd0'h5", "Good"], true), cljs.core.PersistentVector.fromArray(["\ufdd0'p", "But actually, he thought as he readjusted the Ministry of\n        Plenty's figures, it was not even forgery. It was merely the\n        substitution of one piece of nonsense for another. Most of the\n        material that you were dealing with had no connection with\n        anything in the real world, not even the kind of connection\n        that is contained in a direct lie. Statistics were just as\n        much a fantasy in their original version as in their rectified\n        version."], 
