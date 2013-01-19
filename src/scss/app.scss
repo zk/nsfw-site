@@ -13,8 +13,8 @@ $copy-font: "Helvetica Neue", Helvetica, sans-serif;
 
 body, html {
   font-family: $copy-font;
-  font-size: 16px;
   font-weight: normal;
+  font-size: 100%;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -46,8 +46,8 @@ h5 {
 }
 
 p {
-  margin-bottom: 10px;
-  line-height: 24px;
+  margin-bottom: 1em;
+  line-height: 1.7em;
 }
 
 em {
@@ -490,5 +490,58 @@ table.params td {
 @media screen and (max-width: 980px) {
   .example pre {
     font-size: 10px;
+  }
+}
+
+.para-width-ex {
+  p {
+    background-color: #eee;
+    padding: 10px;
+  }
+}
+
+.container.design {
+  h4 {
+    margin-top: 20px;
+  }
+}
+
+.grid-images {
+  text-align: right;
+
+  .mouseover-image {
+    display: inline-block;
+    position: relative;
+    margin-left: 20px;
+  }
+  
+  img {
+    max-width: 150px;
+    vertical-align: top;
+    border: solid #eee 1px;
+  }
+
+  span {
+    display: none;
+    z-index: 1;
+    position: absolute;
+    text-align: center;
+    padding-top: 40px;
+    color: white;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.8);
+  }
+
+  .mouseover-image:hover span {
+    display: block;
+  }
+
+  
+
+  img.border {
+    border: solid #eee 1px;
   }
 }

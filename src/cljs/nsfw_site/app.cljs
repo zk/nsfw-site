@@ -11,13 +11,17 @@
             [nsfw.ani :as ani]
             [clojure.string :as str]))
 
-(defn title->id [title]
+(defn title->id
+  "Convert a title to kebob-case, used for anchor targets."
+  [title]
   (-> (str/lower-case title)
       (str/replace #"\s" "-")
       (str/replace #"/" "")
       (str/replace #"-+" "-")))
 
-(defn section [title & content]
+(defn section
+  "Styleguide section template"
+  [title & content]
   (let [id (title->id title)]
     (dom/$ [:div.container.section
             [:div.row
@@ -27,59 +31,23 @@
                title]]]
             content])))
 
-(def icon-chars
-  '{:snowman ☃
-    :umbrella ☂
-    :delta Δ
-    :sun ☀
-    :section §
-    :dagger †
-    :double-dagger ‡
-    :wtf ⁈
-    :broken-bar ¦
-    :interrobang ‽
-    :white-circle-dots ⚇
-    :white-circle-dot ⚆
-    :black-circle-dots ⚉
-    :black-circle-dot ⚈
-    :crossed-swords ⚔
-    :dharma-wheel ☸
-    :circled-bullet ⦿
-    :floral-heart ❦
-    :circled-white-star ✪
-    :black-square ■
-    :white-square □
-    :black-diamonds ❖
-    :heavy-ol-black-star ✮
-    :nw-ne-arrows ⤧
-    :snowflake ❄
-    :hot-springs ♨
-    :airplane ✈
-    :white-smiling-face ☺
-    :cloud ☁
-    :nw-crossing-ne ⤲
-    :anchor ⚓
-    :reference-mark ※
-    :comet ☄
-    :alembic ⚗})
-
 (def supported-versions {:safari "Safari 1.0"})
-
 
 (def $body (dom/$ "body"))
 
 (def hero (comp/bleed-box
            {:img "/img/dog3.jpg"}
            [:div.navbar
-            [:h1
-             [:span.nsfw-icon
-              (:alembic icon-chars)]
-             "NSFW"]]
+            [:a.header-brand {:href "/"}
+             [:h1
+              [:span.nsfw-icon
+               ;; alembic
+               "⚗"]
+              "NSFW"]]]
            [:div.hero-content
             [:h3 "Get web stuff done with Clojure"]
             [:p
-             "NSFW is a set of libraries that provide you the basics for building "
-             "modern webapps using HTML5, CSS3 and Clojurescript."]
+             "Build modern webapps using HTML5, CSS3 and Clojurescript."]
             [:p "Warning, super-extra alpha."]
             [:br]
             (let [colors (cycle ["#00A8C6" "#40C0CB" "#AEE239" "#8FBE00"])]
@@ -110,22 +78,6 @@
                          (dom/add-class textarea :error))))]
     (dom/val-changed textarea on-change)
     el))
-
-(def icons
-  (dom/$
-   [:div.icons
-    [:h2 "Icons"]
-    [:ul.icon-overview
-     (->> icon-chars
-          (sort-by first)
-          (map
-           (fn [[k v]]
-             (let [name (name k)]
-               [:li.icon-cubby
-                [:span.glyph (str v)]
-                [:br]
-                " " name]))))]
-    [:div.clear]]))
 
 (defn text-atom-vis [atom]
   (bind/render
@@ -295,10 +247,10 @@
      [:div.row
       [:div.span6
        [:h2
-        [:a.section-link {:href (str "#" id)} "link"]
+        [:a.section-link {:href "#bleed-box"} "link"]
         "Bleed Box"]
        [:p "Require " [:code "[nsfw.components :as comp]"]]
-       [:p "Full-bleed background images or video!!!"]]
+       [:p "Full-bleed background images or video."]]
       [:div.span6
        [:div.example
         [:pre
@@ -534,10 +486,71 @@
 
 (def $body (dom/$ "body"))
 
+(defn mouseover-image [src text]
+  [:div.mouseover-image
+   [:img {:src src}]
+   [:span text]])
+
+(def design
+  (section
+   "Designy Things"
+   [:div.container.design
+    [:div.row
+     [:div.span5
+      [:p "As developers, no longer can we ignore basic design principles when writing software."]]
+     [:div.span7.grid-images
+      (mouseover-image "http://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Grid2aib.svg/250px-Grid2aib.svg.png"
+                       "Grids")
+      (mouseover-image "http://f.cl.ly/items/0T1a2j330V3V3t3x0e18/Screen%20Shot%202013-01-18%20at%205.33.34%20PM.png"
+                       "Typography")
+      (mouseover-image "http://f.cl.ly/items/1U0J0J300b110z0R0S02/Screen%20Shot%202013-01-18%20at%205.32.09%20PM.png"
+                       "Whitespace")]]
+    [:div.row.grids
+     [:div.span12
+      [:h4 "Grids"]
+      [:div.row
+       [:div.span5 "foo"]
+       [:div.span7]]]]
+    [:div.row
+     [:div.span12
+      [:h4 "Whitespace"]]]
+    [:div.row
+     [:div.span12
+      [:h4 "Paragraph Widths"]
+      [:p
+       "Paragraph line widths should be between " [:em "45 and 75 characters"] ". "
+       [:a {:href "http://trentwalton.com/2013/01/07/flexible-foundations/"}
+        "link"]]]]
+    [:div.row
+     [:div.span6.para-width-ex
+      [:h5 "Good"]
+      [:p
+       "But actually, he thought as he readjusted the Ministry of
+        Plenty's figures, it was not even forgery. It was merely the
+        substitution of one piece of nonsense for another. Most of the
+        material that you were dealing with had no connection with
+        anything in the real world, not even the kind of connection
+        that is contained in a direct lie. Statistics were just as
+        much a fantasy in their original version as in their rectified
+        version."]]
+     [:div.span4.para-width-ex
+      [:h5 "Borderline"]
+      [:p
+       "But actually, he thought as he readjusted the Ministry of
+        Plenty's figures, it was not even forgery. It was merely the
+        substitution of one piece of nonsense for another. Most of the
+        material that you were dealing with had no connection with
+        anything in the real world, not even..."]]
+     [:div.span2.para-width-ex [:h5 "Horrible"]
+      [:p
+       "But actually, he thought as he readjusted the Ministry of
+        Plenty's figures, it was not even forgery. It was merely..."]]]]))
+
  (-> $body
     (dom/append hero)
     (dom/append banner)
     (dom/append getting-started)
+    (dom/append design)
     (dom/append templating)
     (dom/append event-binding)
     (dom/append animations)
