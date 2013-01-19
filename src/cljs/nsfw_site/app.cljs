@@ -486,10 +486,17 @@
 
 (def $body (dom/$ "body"))
 
-(defn mouseover-image [src text]
-  [:div.mouseover-image
-   [:img {:src src}]
-   [:span text]])
+(defn rollover-image [src text]
+  (let [span (dom/$ [:span.a50 text])]
+    (dom/mouseout span #(-> span
+                            (dom/add-class :fadeOut)
+                            (dom/rem-class :fadeIn)))
+    (-> (dom/$ [:div.mouseover-image
+                [:img {:src src}]
+                span])
+        (dom/mouseover #(-> span
+                            (dom/add-class :fadeIn)
+                            (dom/rem-class :fadeOut))))))
 
 (def design
   (section
@@ -497,13 +504,13 @@
    [:div.container.design
     [:div.row
      [:div.span5
-      [:p "As developers, no longer can we ignore basic design principles when writing software."]]
+      [:p "As developers, we can no longer ignore basic design principles when writing software."]]
      [:div.span7.grid-images
-      (mouseover-image "http://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Grid2aib.svg/250px-Grid2aib.svg.png"
+      (rollover-image "http://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Grid2aib.svg/250px-Grid2aib.svg.png"
                        "Grids")
-      (mouseover-image "http://f.cl.ly/items/0T1a2j330V3V3t3x0e18/Screen%20Shot%202013-01-18%20at%205.33.34%20PM.png"
+      (rollover-image "http://f.cl.ly/items/0T1a2j330V3V3t3x0e18/Screen%20Shot%202013-01-18%20at%205.33.34%20PM.png"
                        "Typography")
-      (mouseover-image "http://f.cl.ly/items/1U0J0J300b110z0R0S02/Screen%20Shot%202013-01-18%20at%205.32.09%20PM.png"
+      (rollover-image "http://f.cl.ly/items/1U0J0J300b110z0R0S02/Screen%20Shot%202013-01-18%20at%205.32.09%20PM.png"
                        "Whitespace")]]
     [:div.row.grids
      [:div.span12
