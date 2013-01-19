@@ -5,8 +5,8 @@
 
 body, html {
   font-family: "Helvetica Neue", Helvetica, sans-serif;
-  font-size: 16px;
-  font-weight: normal; }
+  font-weight: normal;
+  font-size: 100%; }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: "Helvetica Neue", Helvetica, sans-serif; }
@@ -19,15 +19,18 @@ h2, h3, h4 {
 
 h2 {
   margin-top: 30px;
-  margin-bottom: 0px; }
+  margin-bottom: 20px; }
 
 h3 {
   margin-top: 20px; }
 
+h5 {
+  font-size: 16px;
+  margin-bottom: 5px; }
+
 p {
-  margin-top: 20px;
-  margin-bottom: 10px;
-  line-height: 24px; }
+  margin-bottom: 1em;
+  line-height: 1.7em; }
 
 em {
   font-weight: bold;
@@ -50,6 +53,13 @@ code {
   clear: both; }
 
 /* end bootstrap */
+a.header-brand {
+  color: white; }
+
+a.header-brand:hover {
+  color: white;
+  text-decoration: none; }
+
 .hero-content {
   padding: 40px;
   background-color: rgba(0, 0, 0, 0.9);
@@ -365,3 +375,40 @@ table.params td {
 
 .chart-result {
   margin-right: 10px; }
+
+@media screen and (max-width: 980px) {
+  .example pre {
+    font-size: 10px; } }
+.para-width-ex p {
+  background-color: #eee;
+  padding: 10px; }
+
+.container.design h4 {
+  margin-top: 20px; }
+
+.grid-images {
+  text-align: right; }
+  .grid-images .mouseover-image {
+    display: inline-block;
+    position: relative;
+    margin-left: 20px; }
+  .grid-images img {
+    max-width: 150px;
+    vertical-align: top;
+    border: solid #eeeeee 1px; }
+  .grid-images span {
+    display: none;
+    z-index: 1;
+    position: absolute;
+    text-align: center;
+    padding-top: 40px;
+    color: white;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.8); }
+  .grid-images .mouseover-image:hover span {
+    display: block; }
+  .grid-images img.border {
+    border: solid #eeeeee 1px; }
