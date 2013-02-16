@@ -9,7 +9,8 @@
             [nsfw.chart :as chart]
             [cljs.reader :as reader]
             [nsfw.ani :as ani]
-            [clojure.string :as str]))
+            [clojure.string :as str]
+            [nsfw.console :as console]))
 
 (defn title->id
   "Convert a title to kebob-case, used for anchor targets."
@@ -35,33 +36,47 @@
 
 (def $body (dom/$ "body"))
 
+(def $navbar [:div.navbar
+              [:a.header-brand {:href "/"}
+               [:h1
+                [:span.nsfw-icon
+                 ;; alembic
+                 "⚗"]
+                "NSFW"]]])
+
+(defn hero-link [color title]
+  [:a.hero-link {:href (str "#" (title->id title))
+                 :style {:background-color color}}
+   title])
+
+(def colors (cycle ["#00A8C6" "#40C0CB" "#AEE239" "#8FBE00"]))
+
+(def section-titles ["Getting Started"
+                     "Templating"
+                     "Event Binding"
+                     "Loading Indicators"
+                     "Local Storage"
+                     "Mapping / Geolocation"
+                     "Bleed Box"
+                     "Charting"])
+
 (def hero (comp/bleed-box
            {:img "/img/dog3.jpg"}
-           [:div.navbar
-            [:a.header-brand {:href "/"}
-             [:h1
-              [:span.nsfw-icon
-               ;; alembic
-               "⚗"]
-              "NSFW"]]]
+           $navbar
            [:div.hero-content
             [:h3 "Get web stuff done with Clojure"]
-            [:p
-             "Build modern webapps using HTML5, CSS3 and Clojurescript."]
+            [:p "Build modern webapps using HTML5, CSS3 and Clojurescript."]
             [:p "Warning, super-extra alpha."]
             [:br]
-            (let [colors (cycle ["#00A8C6" "#40C0CB" "#AEE239" "#8FBE00"])]
-              (->> ["Getting Started" "Templating" "Event Binding"
-                    "Loading Indicators" "Local Storage"
-                    "Mapping / Geolocation" "Bleed Box" "Charting"]
-                   (map (fn [color title]
-                          [:a.hero-link {:href (str "#" (title->id title))
-                                         :style (str "background-color: " color ";")}
-                           title])
-                        colors)))]))
+            (map hero-link colors section-titles)]))
 
-(def banner (dom/$ [:div.post-bleed-banner
-                    "Divider!"]))
+(def nav-banner
+  (dom/$
+   [:div.post-bleed-banner
+    (map
+     hero-link
+     colors
+     section-titles)]))
 
 
 (defn data-input [atom & [initial-value]]
@@ -79,21 +94,32 @@
     (dom/val-changed textarea on-change)
     el))
 
-(defn text-atom-vis [atom]
-  (bind/render
-   (dom/$ [:div.code])
-   atom
-   (fn [new old el] (pr-str new))))
+(defn data-input [!atom & [initial-value]]
+  (->
+
+   ;; Structure
+   [:div.data-input
+    [:textarea {:spellcheck "false" :rows 5}
+     (or initial-value (pr-str @!atom))]]
+
+   ;; Behavior
+   (dom/val-changed
+    "textarea"
+    (fn [$e val]
+      (try
+        (reset! !atom (reader/read-string val))
+        (dom/rem-class $e :error)
+        (catch js/Error e
+          (dom/add-class $e :error)))))))
 
 (defn html-atom-vis [atom]
-  (bind/render
-   (dom/$ [:div.html-vis])
+  (bind/render2
    atom
-   (fn [new old el]
-     (try*
-      (dom/$ new)
-      (catch e
-          [:div.err "Couldn't parse html."])))))
+   [:div.html-vis
+    #(try
+      (dom/$ %)
+      (catch js/Error e
+        [:div.err "Couldn't parse html."]))]))
 
 (def templating
   (let [a (atom [:div#my-div
@@ -143,6 +169,64 @@
 
 (defn local-storage-example []
   (let [input (dom/$ [:input {:type "text" :id "my-key" :placeholder "ex. [1 2 3]"}])
+        output (dom/$ [:em (pr-str (:my-key storage/local))])]
+    (dom/on-enter input (fn [e]
+                          (try
+                            (dom/prevent e)
+                            (storage/lset! :my-key (reader/read-string (dom/val input)))
+                            (dom/text output (pr-str (:my-key storage/local)))
+                            (dom/rem-class input :error)
+                            (catch js/Object e
+                              (dom/add-class input :error)
+                              (throw e)))))
+    [:div.example.local-storage-example
+     [:pre
+      ";; Local storage acts like a map / hash."
+      "\n\n"
+      "(storage/lset! :my-key \"foo\")"
+      "\n\n"
+      "(:my-key storage/local) ;=> \"foo\""
+      "\n\n"
+      "(storage/lget! :my-key) ;=> \"foo\""
+      "\n\n"
+      "(storage/lget! :none \"default\")\n"
+      ";=> \"default\""
+      ]
+     [:form.form-inline
+      [:label.control-label {:for "my-key"} "my-key"]
+      ": "
+      input
+      " -> "
+      output
+      " (last value)"]]))
+
+(defn local-storage-form []
+  (->
+
+   [:form.form-inline
+    [:label.control-label {:for "my-key"} "my-key"]
+    ": "
+    [:input {:type "text" :id "my-key" :placeholder "ex. [1 2 3]"}]
+    " -> "
+    [:em (pr-str (:my-key storage/local))]
+    " (last value)"]
+
+   (dom/on-enter
+    :input
+    (dom/on-enter input (fn [e]
+                          (try
+                            (dom/prevent e)
+                            (storage/lset! :my-key (reader/read-string (dom/val input)))
+                            (dom/text output (pr-str (:my-key storage/local)))
+                            (dom/rem-class input :error)
+                            (catch js/Object e
+                              (dom/add-class input :error)
+                              (throw e))))))))
+
+
+(defn local-storage-example []
+  (let [!state (atom (:my-key storage/local))
+        input (dom/$ )
         output (dom/$ [:em (pr-str (:my-key storage/local))])]
     (dom/on-enter input (fn [e]
                           (try
@@ -481,8 +565,25 @@
                    :min 0
                    :max 100})]]]]))
 
+(defn hello-world [] [:h1 "hello world"])
+
 (def getting-started
-  (section "Getting Started"))
+  (section "Getting Started"
+           [:div.row
+            [:div.span5
+             [:p "We aim to make the simple things easy, and the complex things possible. We prefer the simple, focused elements composed together to make larger components and applications, and a clear separation in code between structure, presentation, and behavior. Components in NSFW contain some or all of the previous three things. The most basic component is structure (HTML) only."]
+             [:p "Communication between these basic elements happens through one naming mechanism: CSS selectors."]]
+            [:div.span7
+             [:div.example
+              [:pre
+               (pr-str [:h1 "hello world"])
+               (hello-world)
+               "\n"
+               (pr-str '(def !greeting "bar")) "\n"
+               (pr-str '(bind/content (atom "bar") :h1))
+               [:h1 "bar"] "\n"
+               (pr-str '(reset! !greeting "baz"))
+               [:h1 "baz"]]]]]))
 
 (def $body (dom/$ "body"))
 
@@ -507,11 +608,11 @@
       [:p "As developers, we can no longer ignore basic design principles when writing software."]]
      [:div.span7.grid-images
       (rollover-image "http://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Grid2aib.svg/250px-Grid2aib.svg.png"
-                       "Grids")
+                      "Grids")
       (rollover-image "http://f.cl.ly/items/0T1a2j330V3V3t3x0e18/Screen%20Shot%202013-01-18%20at%205.33.34%20PM.png"
-                       "Typography")
+                      "Typography")
       (rollover-image "http://f.cl.ly/items/1U0J0J300b110z0R0S02/Screen%20Shot%202013-01-18%20at%205.32.09%20PM.png"
-                       "Whitespace")]]
+                      "Whitespace")]]
     [:div.row.grids
      [:div.span12
       [:h4 "Grids"]
@@ -553,9 +654,9 @@
        "But actually, he thought as he readjusted the Ministry of
         Plenty's figures, it was not even forgery. It was merely..."]]]]))
 
- (-> $body
+(-> $body
     (dom/append hero)
-    (dom/append banner)
+    (dom/append nav-banner)
     (dom/append getting-started)
     (dom/append design)
     (dom/append templating)

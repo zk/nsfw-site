@@ -100,3 +100,50 @@ h1, h2, h3, h4, h5, h6 {
   right: 5px;
   z-index: 1;
 }
+
+
+/* Console */
+
+.debug {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 20px;
+  border-bottom: solid #ccc 1px;
+  background-color: white;
+  opacity: 0.95;
+  z-index: 10000;
+  overflow-y: scroll;
+}
+
+.debug .search {
+  display: block;
+  width: 100%;
+  right: 0;
+  margin-bottom: 10px;
+}
+
+.debug table {
+  font-family: courier, monospace;
+  margin-left: 0px;
+}
+
+.debug td {
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 4px;
+  padding-top: 4px;
+}
+
+.debug .odd td {
+  background-color: #eee;
+}
+
+.debug .data-type {
+  color: #aaa;
+}
+
+ 
+
