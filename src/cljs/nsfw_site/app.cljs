@@ -117,9 +117,9 @@
    atom
    [:div.html-vis
     #(try
-      (dom/$ %)
-      (catch js/Error e
-        [:div.err "Couldn't parse html."]))]))
+       (dom/$ %)
+       (catch js/Error e
+         [:div.err "Couldn't parse html."]))]))
 
 (def templating
   (let [a (atom [:div#my-div
@@ -231,7 +231,8 @@
     (dom/on-enter input (fn [e]
                           (try
                             (dom/prevent e)
-                            (storage/lset! :my-key (reader/read-string (dom/val input)))
+                            (storage/lset! :my-key (reader/read-string (dom/val
+                                                                        input)))
                             (dom/text output (pr-str (:my-key storage/local)))
                             (dom/rem-class input :error)
                             (catch js/Object e
