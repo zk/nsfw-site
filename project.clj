@@ -3,7 +3,7 @@
   :min-lein-version "2"
   :dependencies [[org.clojure/clojure "1.4.0"]
                  [org.clojure/tools.nrepl "0.2.0-RC1"]
-                 [nsfw "0.4.3"]]
+                 [nsfw "0.4.4"]]
   :source-paths ["src/clj"]
   :test-paths ["test/clj"]
   :plugins [[lein-cljsbuild "0.2.10"]]
