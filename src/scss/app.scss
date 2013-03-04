@@ -8,7 +8,6 @@ $copy-font: "Helvetica Neue", Helvetica, sans-serif;
 * {
   margin: 0px;
   padding: 0px;
-  letter-spacing: 1px;
 }
 
 body, html {
@@ -25,29 +24,16 @@ body {
   //background-color: #FCF8F2;
   background-color: #FEFEFE;
 }
-
-
-h2, h3, h4 {
-  margin-bottom: 10px;
-}
-
-h2 {
-  margin-top: 30px;
-  margin-bottom: 20px;
-}
-
-h3 {
-  margin-top: 20px;
+.header-brand h1 {
+  font-weight: normal;
 }
 
 h5 {
-  font-size: 16px;
-  margin-bottom: 5px;
+  font-size: 1.5em;
+  margin-bottom: 0.2em;
 }
 
 p {
-  margin-bottom: 1em;
-  line-height: 1.7em;
 }
 
 em {
@@ -59,15 +45,18 @@ pre,
 code,
 textarea,
 input[type="text"] {
-  border-raidus: 0px;
-  -webkit-border-radius: 0px;
-  -moz-border-radius: 0px;
   border: $stage-border;
 }
 
 code {
   padding-top: 1px;
   padding-bottom: 1px;
+}
+
+header {
+  background-color: #333;
+  color: white;
+  padding: 0.5em;
 }
 
 
@@ -84,7 +73,6 @@ a.header-brand:hover {
   text-decoration: none;
 }
 
-
 .hero-content {
   padding: 40px;
   background-color: rgba(0,0,0,0.9);
@@ -95,8 +83,6 @@ a.header-brand:hover {
 }
 
 .hero-content h1,
-.hero-content h2,
-.hero-content h3
 {
   margin-top: 0;
   margin-bottom: 20px;
@@ -122,9 +108,7 @@ a.header-brand:hover {
 }
 
 .navbar h1 {
-  font-weight: normal;
   letter-spacing: 8px;
-  font-size: 32px;
 }
 
 .hero-content .do-it {
@@ -308,10 +292,6 @@ a.header-brand:hover {
 div.html-example {
 }
 
-.container {
-  margin-bottom: 40px;
-}
-
 .example h1,
 .example h2,
 .example h3,
@@ -486,7 +466,6 @@ table.params td {
   margin-right: 10px;
 }
 
-
 @media screen and (max-width: 980px) {
   .example pre {
     font-size: 10px;
@@ -540,82 +519,40 @@ table.params td {
   }
 }
 
+.test-content {
+  border: solid #eee 1px;
+  padding: 20px;
+  position: relative;
+  
 
-/*
-Animate.css - http://daneden.me/animate
-LICENSED UNDER THE  MIT LICENSE (MIT)
+  a.run {
+    text-decoration: none;
+    position: absolute;
+    top: 0.25em;
+    right: 0.25em;
+    color: #aaa;
+    font-weight: 200;
+    font-size: 0.7em;
+  }
 
-Copyright (c) 2012 Dan Eden
+  a.run:hover {
+    cursor: pointer;
+  }
 
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-*/
-
-.a50 {
-  -webkit-animation-fill-mode: both;
-  -moz-animation-fill-mode: both;
-  -ms-animation-fill-mode: both;
-  -o-animation-fill-mode: both;
-  animation-fill-mode: both;
-  -webkit-animation-duration: 0.05s;
-  -moz-animation-duration: 0.05s;
-  -ms-animation-duration: 0.05s;
-  -o-animation-duration: 0.05s;
-  animation-duration: 0.05s;
+  a.run:active {
+    color: #444;
+  }
 }
 
-@-webkit-keyframes fadeIn {
-  0% {opacity: 0;}	
-  100% {opacity: 1;}
+.hero-container {
+  padding: 2em;
 }
 
-@-moz-keyframes fadeIn {
-  0% {opacity: 0;}	
-  100% {opacity: 1;}
+.page-content {
+  padding: 2em;
 }
 
-@-o-keyframes fadeIn {
-  0% {opacity: 0;}	
-  100% {opacity: 1;}
-}
 
-@keyframes fadeIn {
-	0% {opacity: 0;}	
-	100% {opacity: 1;}
-}
-
-.fadeIn {
-	-webkit-animation-name: fadeIn;
-	-moz-animation-name: fadeIn;
-	-o-animation-name: fadeIn;
-	animation-name: fadeIn;
-}
-@-webkit-keyframes fadeOut {
-	0% {opacity: 1;}
-	100% {opacity: 0;}
-}
-
-@-moz-keyframes fadeOut {
-	0% {opacity: 1;}
-	100% {opacity: 0;}
-}
-
-@-o-keyframes fadeOut {
-	0% {opacity: 1;}
-	100% {opacity: 0;}
-}
-
-@keyframes fadeOut {
-	0% {opacity: 1;}
-	100% {opacity: 0;}
-}
-
-.fadeOut {
-	-webkit-animation-name: fadeOut;
-	-moz-animation-name: fadeOut;
-	-o-animation-name: fadeOut;
-	animation-name: fadeOut;
+.easing > * {
+  margin-bottom: 0.5em;
 }

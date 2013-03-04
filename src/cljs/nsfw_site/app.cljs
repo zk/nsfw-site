@@ -10,7 +10,9 @@
             [cljs.reader :as reader]
             [nsfw.ani :as ani]
             [clojure.string :as str]
-            [nsfw.console :as console]))
+            [nsfw.console :as console]
+            [nsfw-site.anim :as anim]
+            [nsfw-site.common :as common]))
 
 (defn title->id
   "Convert a title to kebob-case, used for anchor targets."
@@ -36,14 +38,6 @@
 
 (def $body (dom/$ "body"))
 
-(def $navbar [:div.navbar
-              [:a.header-brand {:href "/"}
-               [:h1
-                [:span.nsfw-icon
-                 ;; alembic
-                 "⚗"]
-                "NSFW"]]])
-
 (defn hero-link [color title]
   [:a.hero-link {:href (str "#" (title->id title))
                  :style {:background-color color}}
@@ -62,7 +56,7 @@
 
 (def hero (comp/bleed-box
            {:img "/img/dog3.jpg"}
-           $navbar
+           common/$navbar
            [:div.hero-content
             [:h3 "Get web stuff done with Clojure"]
             [:p "Build modern webapps using HTML5, CSS3 and Clojurescript."]
@@ -212,21 +206,22 @@
     " (last value)"]
 
    (dom/on-enter
-    :input
-    (dom/on-enter input (fn [e]
-                          (try
-                            (dom/prevent e)
-                            (storage/lset! :my-key (reader/read-string (dom/val input)))
-                            (dom/text output (pr-str (:my-key storage/local)))
-                            (dom/rem-class input :error)
-                            (catch js/Object e
-                              (dom/add-class input :error)
-                              (throw e))))))))
+    (fn [e el]
+      (let [input (dom/$ el "input")
+            output (dom/$ el "em")]
+        (try
+          (dom/prevent e)
+          (storage/lset! :my-key (reader/read-string (dom/val input)))
+          (dom/text output (pr-str (:my-key storage/local)))
+          (dom/rem-class input :error)
+          (catch js/Object e
+            (dom/add-class input :error)
+            (throw e))))))))
 
 
 (defn local-storage-example []
   (let [!state (atom (:my-key storage/local))
-        input (dom/$ )
+        input (dom/$ [:input])
         output (dom/$ [:em (pr-str (:my-key storage/local))])]
     (dom/on-enter input (fn [e]
                           (try
@@ -283,7 +278,6 @@
               " to store and retreive values respectively."]]
             [:div.span6
              (local-storage-example)]]))
-
 
 
 (def html5-geoloc
@@ -586,8 +580,6 @@
                (pr-str '(reset! !greeting "baz"))
                [:h1 "baz"]]]]]))
 
-(def $body (dom/$ "body"))
-
 (defn rollover-image [src text]
   (let [span (dom/$ [:span.a50 text])]
     (dom/mouseout span #(-> span
@@ -655,17 +647,33 @@
        "But actually, he thought as he readjusted the Ministry of
         Plenty's figures, it was not even forgery. It was merely..."]]]]))
 
-(-> $body
-    (dom/append hero)
-    (dom/append nav-banner)
-    (dom/append getting-started)
-    (dom/append design)
-    (dom/append templating)
-    (dom/append event-binding)
-    (dom/append animations)
-    (dom/append loading-indicators)
-    (dom/append html5-storage)
-    (dom/append html5-geoloc)
-    (dom/append bleed-box-example)
-    (dom/append charts)
-    (dom/append [:div (repeat 10 [:br])]))
+
+(defn location-hash [] (.-hash (.-location js/window)))
+
+(defn route [& parts]
+  (let [pairs (partition 2 parts)
+        clean-hash (->> (location-hash) (drop 1) (apply str))]
+    (when (= "/" (first clean-hash))
+      (loop [pairs pairs]
+        (let [pair (first pairs)]
+          (if (or (keyword? (first pair))
+                  (= clean-hash (first pair)))
+            ((second pair))
+            (recur (rest pairs))))))))
+
+(route
+ "/ani" anim/app
+ :else  #(-> $body
+             (dom/append hero)
+             (dom/append nav-banner)
+             (dom/append getting-started)
+             (dom/append design)
+             (dom/append templating)
+             (dom/append event-binding)
+             (dom/append animations)
+             (dom/append loading-indicators)
+             (dom/append html5-storage)
+             (dom/append html5-geoloc)
+             (dom/append bleed-box-example)
+             (dom/append charts)
+             (dom/append [:div (repeat 10 [:br])])))
