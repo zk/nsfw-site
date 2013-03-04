@@ -92,7 +92,7 @@
       (test/section
        {:title "Easing"
         :desc [:div
-               "Possible values for the " [:code ":ease"] "key are: "
+               "Possible values for the " [:code ":ease"] " key are: "
                (->> easing-functions
                     (map str)
                     (map #(vector :code %))
