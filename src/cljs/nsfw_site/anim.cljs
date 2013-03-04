@@ -55,8 +55,8 @@
      {:title   "Width"
       :code    (str "(dom/trans\n"
                     "  $el\n"
-                    "  {:width \"100%\"}\n"
-                    "  {:ease :ease\n"
+                    "  {:width \"100%\"\n"
+                    "   :ease :ease\n"
                     "   :done #(util/log \"done\")})")
       :run     #(let [el (dom/$ [:div {:style {:width "10%"
                                                :height "100px"
@@ -74,8 +74,8 @@
       :code    (str "(dom/trans\n"
                     "  $el\n"
                     "  {:width \"100%\"\n"
-                    "   :opacity 0.5}\n"
-                    "  {:ease :ease\n"
+                    "   :opacity 0.5\n"
+                    "   :ease :ease\n"
                     "   :done #(util/log \"done\")})")
       :run     #(let [el (dom/$ [:div {:style {:width "10%"
                                                :height "100px"
