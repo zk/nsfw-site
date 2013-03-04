@@ -653,27 +653,31 @@
 (defn route [& parts]
   (let [pairs (partition 2 parts)
         clean-hash (->> (location-hash) (drop 1) (apply str))]
-    (when (= "/" (first clean-hash))
+    (if (= "/" (first clean-hash))
       (loop [pairs pairs]
         (let [pair (first pairs)]
           (if (or (keyword? (first pair))
                   (= clean-hash (first pair)))
             ((second pair))
-            (recur (rest pairs))))))))
+            (recur (rest pairs)))))
+      (if (= :else (first (last pairs)))
+        ((second (last pairs)))))))
 
 (route
  "/ani" anim/app
- :else  #(-> $body
-             (dom/append hero)
-             (dom/append nav-banner)
-             (dom/append getting-started)
-             (dom/append design)
-             (dom/append templating)
-             (dom/append event-binding)
-             (dom/append animations)
-             (dom/append loading-indicators)
-             (dom/append html5-storage)
-             (dom/append html5-geoloc)
-             (dom/append bleed-box-example)
-             (dom/append charts)
-             (dom/append [:div (repeat 10 [:br])])))
+ :else  #(do
+           (util/log "hi")
+           (-> $body
+                 (dom/append hero)
+                 (dom/append nav-banner)
+                 (dom/append getting-started)
+                 (dom/append design)
+                 (dom/append templating)
+                 (dom/append event-binding)
+                 (dom/append animations)
+                 (dom/append loading-indicators)
+                 (dom/append html5-storage)
+                 (dom/append html5-geoloc)
+                 (dom/append bleed-box-example)
+                 (dom/append charts)
+                 (dom/append [:div (repeat 10 [:br])]))))
