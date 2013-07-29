@@ -185,6 +185,9 @@ code {
   border-radius: 3px;
   background-color: #fafafa; }
 
+img {
+  max-width: 100%; }
+
 .row > * {
   margin-bottom: 1em; }
 .row > *:last-child {

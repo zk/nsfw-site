@@ -12,8 +12,10 @@
             [clojure.string :as str]
             [nsfw.console :as console]
             [nsfw-site.anim :as anim]
-            [nsfw-site.common :as common]))
+            [nsfw-site.common :as common]
+            [nsfw-site.overview :as overview]))
 
+;; --
 (defn title->id
   "Convert a title to kebob-case, used for anchor targets."
   [title]
@@ -22,6 +24,8 @@
       (str/replace #"/" "")
       (str/replace #"-+" "-")))
 
+
+;; --
 (defn section
   "Styleguide section template"
   [title & content]
@@ -663,21 +667,25 @@
       (if (= :else (first (last pairs)))
         ((second (last pairs)))))))
 
-(route
- "/ani" anim/app
- :else  #(do
-           (util/log "hi")
-           (-> $body
-                 (dom/append hero)
-                 (dom/append nav-banner)
-                 (dom/append getting-started)
-                 (dom/append design)
-                 (dom/append templating)
-                 (dom/append event-binding)
-                 (dom/append animations)
-                 (dom/append loading-indicators)
-                 (dom/append html5-storage)
-                 (dom/append html5-geoloc)
-                 (dom/append bleed-box-example)
-                 (dom/append charts)
-                 (dom/append [:div (repeat 10 [:br])]))))
+
+(defn entry []
+  (route
+   "/ani" anim/app
+   :else  #(dom/append $body (overview/app))))
+
+
+
+
+#_#(-> $body (dom/append hero)
+             (dom/append nav-banner)
+             (dom/append getting-started)
+             (dom/append design)
+             (dom/append templating)
+             (dom/append event-binding)
+             (dom/append animations)
+             (dom/append loading-indicators)
+             (dom/append html5-storage)
+             (dom/append html5-geoloc)
+             (dom/append bleed-box-example)
+             (dom/append charts)
+             (dom/append [:div (repeat 10 [:br])]))

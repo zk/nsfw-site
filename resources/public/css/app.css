@@ -316,6 +316,9 @@ input#my-key {
   top: 0px;
   left: 0px; }
 
+.section {
+  margin: 2em; }
+
 .section-link {
   font-size: 12px;
   font-weight: normal;
