@@ -1,7 +1,7 @@
 (ns nsfw-site.anim
   (:require [nsfw.util :as util]
             [nsfw.dom :as dom]
-            [nsfw.ani :as ani]
+            #_[nsfw.ani :as ani]
             [nsfw.components :as comp]
             [nsfw-site.common :as common]
             [nsfw-site.test :as test]))
