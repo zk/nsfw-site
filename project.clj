@@ -1,9 +1,9 @@
 (defproject nsfw-site "0.1.0"
   :description "NSFW overview / docs / demo"
   :min-lein-version "2"
-  :dependencies [[org.clojure/clojure "1.4.0"]
+  :dependencies [[org.clojure/clojure "1.5.1"]
                  [org.clojure/tools.nrepl "0.2.0-RC1"]
-                 [nsfw "0.5.0"]]
+                 [nsfw "0.6.3"]]
   :source-paths ["src/clj"]
   :test-paths ["test/clj"]
   :cljsbuild {:builds
