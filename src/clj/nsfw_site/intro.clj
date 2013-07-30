@@ -8,7 +8,7 @@
    [:div.row.call-out
     [:div.col-lg-12
      [:section
-      [:h1 "Welcome to NSFW!"]
+      [:h1 "Wat?"]
       [:p.lead "NSFW is a framework designed to scale along with your needs.
            We value understandability through introspection: it should
            be easy to understand what's going on in your app, even as it
