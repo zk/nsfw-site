@@ -1,0 +1,35 @@
+#todoapp {
+  border: solid #ddd 1px;
+  padding: 1em;
+
+  ul {
+    margin-bottom: 1.2em;
+  }
+
+  ul li {
+    margin-bottom: 1em;
+  }
+
+  input {
+    font-weight: 300;
+    margin-bottom: 0.3em;
+  }
+
+  li.item {
+    cursor: pointer;
+    padding: 0.3em;
+
+    span {
+      color: #555;
+      display: none;
+    }
+  }
+
+  li.item:hover {
+    background-color: #fbb;
+
+    span {
+      display: block
+    }
+  }
+}
