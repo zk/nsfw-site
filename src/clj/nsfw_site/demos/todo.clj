@@ -11,7 +11,8 @@
       [:h1 "The List"]
       [:p
        "Here's a quick todo app demo using imperative "
-       "dom manipulation and event binding."]]]
+       "dom manipulation and event binding. It's quick, "
+       "it's dirty, and it works."]]]
     [:div.row
      [:div.col-lg-10.col-offset-1
       [:div#todoapp]]]
