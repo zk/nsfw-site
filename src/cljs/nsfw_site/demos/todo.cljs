@@ -55,7 +55,6 @@
 
 (defn ^:export main []
   (.highlight js/SyntaxHighlighter)
-  (util/lpr ($/query :#todoapp))
   (-> ($/query :#todoapp)
       ($/append (todo-app (atom ["the quick"
                                  "brown fox"
