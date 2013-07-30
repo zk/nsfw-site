@@ -1,0 +1,157 @@
+.clojure.syntaxhighlighter .meta {
+  opacity: 0.6 !important;
+}
+
+.clojure.syntaxhighlighter .invalid {
+  color: yellow !important;
+  background: red !important;
+}
+
+.clojure.syntaxhighlighter .quoted {
+  font-style: italic !important;
+}
+
+
+/*
+ * Color scheme
+ */
+/**
+ * SyntaxHighlighter
+ * http://alexgorbatchev.com/SyntaxHighlighter
+ *
+ * SyntaxHighlighter is donationware. If you are using it, please donate.
+ * http://alexgorbatchev.com/SyntaxHighlighter/donate.html
+ *
+ * @version
+ * 3.0.83 (July 02 2010)
+ *
+ * @copyright
+ * Copyright (C) 2004-2010 Alex Gorbatchev.
+ *
+ * @license
+ * Dual licensed under the MIT and GPL licenses.
+ */
+.syntaxhighlighter {
+  background-color: white;
+  width: 650px;
+  margin-left: -60px;
+}
+.syntaxhighlighter .code .line.alt1 {
+  background-color: #F2F2EB ;
+}
+.syntaxhighlighter .code .line.alt2 {
+  background-color: #EDEDE6 ;
+}
+.syntaxhighlighter .line.highlighted.alt1, .syntaxhighlighter .line.highlighted.alt2 {
+  background-color: #e0e0e0 ;
+}
+.syntaxhighlighter .line.highlighted.number {
+  color: #461B0E ;
+}
+.syntaxhighlighter table caption {
+  color: #461B0E ;
+}
+.syntaxhighlighter .gutter {
+  color: #afafaf ;
+  width: 60px;
+}
+.syntaxhighlighter .gutter .line {
+
+}
+.syntaxhighlighter .gutter .line.highlighted {
+  background-color: #6ce26c ;
+  color: white ;
+}
+.syntaxhighlighter.printing .line .content {
+  border: none ;
+}
+.syntaxhighlighter.collapsed {
+  overflow: visible ;
+}
+.syntaxhighlighter.collapsed .toolbar {
+  color: blue ;
+  background: white ;
+  border: 1px solid #6ce26c ;
+}
+.syntaxhighlighter.collapsed .toolbar a {
+  color: blue ;
+}
+.syntaxhighlighter.collapsed .toolbar a:hover {
+  color: red ;
+}
+.syntaxhighlighter .toolbar {
+  color: white ;
+  background: #6ce26c ;
+  border: none ;
+}
+.syntaxhighlighter .toolbar a {
+  color: white ;
+}
+.syntaxhighlighter .toolbar a:hover {
+  color: #461B0E ;
+}
+/*
+ * Element styles
+ */
+.syntaxhighlighter .plain, .syntaxhighlighter .plain a {
+  color: #461B0E ;
+}
+.syntaxhighlighter .comments, .syntaxhighlighter .comments a {
+  color: #008200 ;
+}
+.syntaxhighlighter .string, .syntaxhighlighter .string a {
+  color: #9C867D ;
+}
+.syntaxhighlighter .keyword {
+  color: #006699 ;
+}
+.syntaxhighlighter .preprocessor {
+  color: gray ;
+}
+.syntaxhighlighter .variable {
+  color: #666 ;
+}
+.syntaxhighlighter .value {
+  color: #006699 ;
+}
+.syntaxhighlighter .functions {
+  color: #01237E ;
+}
+.syntaxhighlighter .constants {
+  color: #0066cc ;
+}
+.syntaxhighlighter .script {
+  font-weight: bold ;
+  color: #006699 ;
+  background-color: none ;
+}
+.syntaxhighlighter .color1, .syntaxhighlighter .color1 a {
+  color: gray ;
+}
+.syntaxhighlighter .color2, .syntaxhighlighter .color2 a {
+  color: #ff1493 ;
+}
+.syntaxhighlighter .color3, .syntaxhighlighter .color3 a {
+  color: red ;
+}
+
+.syntaxhighlighter .keyword {
+
+}
+
+.syntaxhighlighter .toolbar {
+  display: none;
+}
+
+.clojure.syntaxhighlighter .meta {
+  opacity: 0.6 ;
+}
+
+.clojure.syntaxhighlighter .invalid {
+  color: yellow ;
+  background: red ;
+}
+
+.clojure.syntaxhighlighter .quoted {
+  font-style: italic ;
+}
