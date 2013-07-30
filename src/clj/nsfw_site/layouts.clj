@@ -49,6 +49,7 @@
 (defn intro [{:keys [title body]}]
   (html/html5
    [:head
+    [:meta {:name "viewport" :content "width=device-width, initial-scale=1.0"}]
     (html/stylesheet "/css/bootstrap.min.css")
     (html/stylesheet "/css/app.css")
     (html/script "/js/intro.js")
