@@ -1,20 +1,11 @@
 (ns nsfw-site.run
-  (:require [nsfw.server :as server]
-            [nsfw.env :as env]
-            [nsfw.app :as app]
-            [ring.middleware.reload-modified :as reload]
-            [nsfw-site.entry :as entry]
-            [clojure.tools.nrepl.server :as repl]))
+  (:require [nsfw]
+            [nsfw.env :as env]))
 
-(defn start-repl [port]
-  (repl/start-server :port port))
-
-(def root-entry
-  (-> #'entry/app
-      (reload/wrap-reload-modified ["src/clj"])
-      (app/debug-exceptions true)))
+(nsfw/load-nss ['nsfw-site.intro
+                'nsfw-site.demos
+                'nsfw-site.demos.todo])
 
 (defn -main [& args]
-  (start-repl (env/int :repl-port 7888))
-  (server/start :entry root-entry
-                :port (env/int :port 8080)))
+  (nsfw/app :repl-port (env/int :repl-port 7888)
+            :server-port (env/int :port 8080)))

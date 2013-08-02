@@ -1,7 +1,8 @@
 (ns nsfw-site.demos.todo
   (:require [nsfw.dom :as $]
             [nsfw.util :as util]
-            [nsfw.bind :as bind]))
+            [nsfw.bind :as bind]
+            [nsfw-site.demos.todo-redux :as redux]))
 
 (defn render-item [item]
   (let [$el ($/node [:li.item
@@ -53,10 +54,33 @@
    (render-items !items)
    (todo-input !items)])
 
+
+(defn example1 []
+  (-> ($/node [:h1 "Hello"])
+      ($/mouseover #($/style %2 {:background-color :#2980B9
+                                 :color :white}))
+      ($/mouseout #($/style %2 {:background-color nil
+                                :color :black}))
+      ($/append-to ($/query :#example1))))
+
+
+(defn example2 []
+  (-> (let [data (atom 0)
+            $el ($/node [:h1 @data])]
+        (bind/change data #($/text $el %3))
+        (util/interval #(swap! data inc) 1000)
+        $el)
+      ($/append-to ($/query :#example2))))
+
 (defn ^:export main []
+  (example1)
+  (example2)
   (.highlight js/SyntaxHighlighter)
   (-> ($/query :#todoapp)
       ($/append (todo-app (atom ["the quick"
                                  "brown fox"
                                  "jumps over the"
                                  "lazy dog"])))))
+
+(defn ^:export redux []
+  (redux/entry))

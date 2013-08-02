@@ -1,41 +1,35 @@
 (ns nsfw-site.demos.todo
   (:require [nsfw.http :as http]
             [nsfw.html :as html]
-            [nsfw-site.layouts :as layouts]))
+            [nsfw-site.demos :as demos]))
 
-(def body
-  {:body
-   [:div.page-demo.container
-    [:div.row
-     [:div.col-lg-10.col-offset-1
-      [:h1 "The List"]
-      [:p
-       "Here's a quick todo app demo using imperative "
-       "dom manipulation and event binding. It's quick, "
-       "it's dirty, and it works."]]]
-    [:div.row
-     [:div.col-lg-10.col-offset-1
-      [:div#todoapp]]]
-    [:div.row
-     [:div.col-lg-10.col-offset-1
-      [:section.code
-       [:h3 [:code "src/clj/nsfw_site/demos/todo.clj"]]
-       [:pre {:class "brush:clojure"}
-        (slurp "src/clj/nsfw_site/demos/todo.clj")]]
-      [:section.code
-       [:h3 [:code "src/scss/todo.scss"]]
-       [:pre {:class "brush:sass"}
-        (slurp "src/scss/todo.scss")]]
-      [:section.code
-       [:h3 [:code "src/clj/nsfw_site/demos/todo.cljs"]]
-       [:pre {:class "brush:clojure"}
-        (slurp "src/cljs/nsfw_site/demos/todo.cljs")]]]]]
-   :js-entry "nsfw_site.demos.todo.main()"})
+(defn body []
+  [:div.row
+   [:div.col-lg-10
+    (-> "src/md/todo.md"
+        slurp
+        html/markdown)]])
 
 (defn
-  ^{:route "/demos/todo"}
+  ^{:route "/demos/the-list"}
   todo
   [r]
-  (-> body
-      layouts/demo
+  (-> {:body (body)
+       :active-tab :the-list
+       :js-entry "nsfw_site.demos.todo.main()"}
+      demos/layout
+      http/html))
+
+(defn
+  ^{:route "/demos/the-list-redux"}
+  the-list-redux
+  [r]
+  (-> {:body [:div.row
+              [:div.col-lg-10
+               (-> "src/md/the-list-redux.md"
+                   slurp
+                   html/markdown)]]
+       :active-tab :the-list
+       :js-entry "nsfw_site.demos.todo.redux()"}
+      demos/layout
       http/html))
