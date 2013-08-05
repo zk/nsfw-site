@@ -26,7 +26,7 @@
         [:h1 "Demos"]
         [:p.lead "Bite-size examples of the NSFW framework."]]]]
      [:div.row
-      [:div.col-lg-2
+      [:div.col-lg-3
        [:ul.nav.demo-nav
         [:li {:class (when (= :the-list active-tab)
                        "active")}
@@ -34,7 +34,7 @@
         [:li {:class (when (= :the-list-redux active-tab)
                        "active")}
          [:a {:href "/demos/the-list-redux"} "The List (Redux)"]]]]
-      [:div.col-lg-10.demo-content
+      [:div.col-lg-9.demo-content
        body]]]
     (html/script "/js/shCore.js")
     (html/script "/js/shBrushClojure.js")

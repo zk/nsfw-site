@@ -1,7 +1,8 @@
-(ns nsfw-site.demos.todo
+(ns nsfw-site.demos
   (:require [nsfw.dom :as $]
             [nsfw.util :as util]
             [nsfw.bind :as bind]
+            [nsfw.affix :as affix]
             [nsfw-site.demos.todo-redux :as redux]))
 
 (defn render-item [item]
@@ -73,6 +74,7 @@
       ($/append-to ($/query :#example2))))
 
 (defn ^:export main []
+  (affix/el ($/query :.demo-nav) 200)
   (example1)
   (example2)
   (.highlight js/SyntaxHighlighter)

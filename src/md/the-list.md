@@ -27,7 +27,7 @@ templating DSL**.
 <div class="demo-example" id="example1"></div>
 
 
-## Data-Binding Through Atoms
+## Data-Binding Using Atoms
 
 Add **data-binding** into the mix with **DOM manipulation** and
 **event-binding**, and you've got the Holy Trinity of web

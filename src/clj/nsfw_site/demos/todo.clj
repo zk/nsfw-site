@@ -5,8 +5,8 @@
 
 (defn body []
   [:div.row
-   [:div.col-lg-10
-    (-> "src/md/todo.md"
+   [:div.col-lg-12
+    (-> "src/md/the-list.md"
         slurp
         html/markdown)]])
 
@@ -16,7 +16,7 @@
   [r]
   (-> {:body (body)
        :active-tab :the-list
-       :js-entry "nsfw_site.demos.todo.main()"}
+       :js-entry "nsfw_site.demos.main()"}
       demos/layout
       http/html))
 
@@ -25,11 +25,11 @@
   the-list-redux
   [r]
   (-> {:body [:div.row
-              [:div.col-lg-10
+              [:div.col-lg-12
                (-> "src/md/the-list-redux.md"
                    slurp
                    html/markdown)]]
        :active-tab :the-list
-       :js-entry "nsfw_site.demos.todo.redux()"}
+       :js-entry "nsfw_site.demos.redux()"}
       demos/layout
       http/html))

@@ -11,7 +11,8 @@
    [:ul.navbar-nav.nav.pull-right
     [:li [:a {:href "/"} "Home"]]
     #_[:li [:a {:href "/getting-started"} "Getting Started"]]
-    [:li [:a {:href "/demos/the-list"} "Demos"]]]])
+    [:li [:a {:href "/demos/the-list"} "Demos"]]
+    [:li [:a {:href "/tools"} "Tools"]]]])
 
 (defn main
   [{:keys [title body]}]

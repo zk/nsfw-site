@@ -167,6 +167,10 @@ header {
   }
 }
 
+.page-lead {
+  border-bottom: solid #ccc 1px;
+}
+
 .glyph {
   padding: 0px;
   margin: 0px;
@@ -653,10 +657,6 @@ table.params td {
     }
   }
 
-  .page-lead {
-    border-bottom: solid #ccc 1px;
-  }
-
   .demo-content {
 
     h1:first-child {
@@ -733,4 +733,18 @@ table.params td {
 .navbar.navbar-inverse {
   padding: 10px;
   border-radius: 0;
+}
+
+@media screen and (max-width: 991px) {
+  .affix {
+    position: static;
+  }
+}
+
+@media screen and (min-width: 991px) {
+  .demo-nav.affix {
+    position: fixed;
+    top: 20px;
+    width: 212.5px;
+  }
 }
