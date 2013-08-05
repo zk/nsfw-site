@@ -55,7 +55,6 @@
    (render-items !items)
    (todo-input !items)])
 
-
 (defn example1 []
   (-> ($/node [:h1 "Hello"])
       ($/mouseover #($/style %2 {:background-color :#2980B9
@@ -63,7 +62,6 @@
       ($/mouseout #($/style %2 {:background-color nil
                                 :color :black}))
       ($/append-to ($/query :#example1))))
-
 
 (defn example2 []
   (-> (let [data (atom 0)
