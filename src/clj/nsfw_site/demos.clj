@@ -1,54 +1,70 @@
 (ns nsfw-site.demos
-  (:require [nsfw.html :as html]
-            [nsfw-site.layouts :as layouts]
-            [nsfw.http :as http]))
-
-(def nav
-  [:ul.nav.nav-stacked.demo-nav
-   [:li [:a {:href "#"} "Todo"]]])
-
-(defn layout
-  [{:keys [title body js-entry active-tab]}]
-  (html/html5
-   [:head
-    [:meta {:name "viewport" :content "width=device-width, initial-scale=1.0"}]
-    (html/stylesheet "/css/bootstrap.min.css")
-    (html/stylesheet "/css/app.css")
-    (html/stylesheet "/css/shCore.css")
-    (html/stylesheet "/css/shClojureExtra.css")
-    [:title (or title "NSFW -- The next-gen web framework.")]]
-   [:body.page-demo
-    layouts/navbar
-    [:div.container
-     [:div.row
-      [:div.col-lg-12
-       [:div.page-lead
-        [:h1 "Demos"]
-        [:p.lead "Bite-size examples of the NSFW framework."]]]]
-     [:div.row
-      [:div.col-lg-3
-       [:ul.nav.demo-nav
-        [:li {:class (when (= :the-list active-tab)
-                       "active")}
-         [:a {:href "/demos/the-list"} "The List"]]
-        [:li {:class (when (= :the-list-redux active-tab)
-                       "active")}
-         [:a {:href "/demos/the-list-redux"} "The List (Redux)"]]]]
-      [:div.col-lg-9.demo-content
-       body]]]
-    (html/script "/js/shCore.js")
-    (html/script "/js/shBrushClojure.js")
-    (html/script "/js/shBrushSass.js")
-    (html/script "/js/app.js")
-    (when js-entry
-      [:script {:type "text/javascript"} js-entry])]))
-
-(def demos-body
-  "")
+  (:require [nsfw]))
 
 (defn
-  ^{:route "/demos"}
-  index [r]
-  (-> {:body demos-body}
-      layout
-      http/html))
+  ^{:comp-tag :demo-nav}
+  demo-nav-comp [{:keys [tab]} body]
+  [:ul.nav.demo-nav
+   {:data-offset-top 200
+    :data-spy "affix"}
+   [:li {:data-tab :the-list
+         :class (when (= :the-list tab) "active")}
+    [:a {:href "/demos/the-list"} "The List"]]
+   [:li.the-list-redux {:class (when (= :the-list-redux tab) "active")}
+    [:a {:href "/demos/the-list-redux"} "The List (Redux)"]]])
+
+(defn
+  ^{:comp-tag :demo}
+  demo-comp [{:keys [tab js-entry]} body]
+  [:page-body
+   {:class "page-demo"
+    :active-tab :demos
+    :script "/js/app.js"
+    :js-entry js-entry}
+   [:div.container
+    [:div.row
+     [:div.col-lg-12
+      [:div.page-lead
+       [:h1 "Demos"]
+       [:p.lead "Bite-size examples of the NSFW framework."]]]]
+    [:div.row
+     [:div.col-lg-3
+      [:demo-nav {:tab tab}]]
+     [:div.col-lg-9.demo-content
+      body]]]])
+
+(defn
+  ^{:route "/demos/the-list"}
+  the-list
+  [r]
+  (nsfw/render
+   [:default-head]
+   [:demo
+    {:tab :the-list
+     :js-entry "nsfw_site.demos.thelist.main()"}
+    [:div#the-list
+     [:markdown {:src "src/md/the-list.md"}]]]))
+
+(defn
+  ^{:route "/demos/the-list-redux"}
+  the-list-redux
+  [r]
+  (nsfw/render
+   [:default-head]
+   [:demo
+    {:tab :the-list-redux
+     :js-entry "nsfw_site.demos.redux.main()"}
+    [:div#the-list
+     [:markdown {:src "src/md/the-list-redux.md"}]]]))
+
+(defn
+  ^{:route "/demos/data-binding"}
+  data-binding
+  [r]
+  (nsfw/render
+   [:default-head]
+   [:demo
+    {:tab :the-list-redux
+     :js-entry "nsfw_site.demos.redux.main()"}
+    [:div#the-list
+     [:markdown {:src "src/md/the-list-redux.md"}]]]))

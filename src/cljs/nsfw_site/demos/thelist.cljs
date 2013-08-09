@@ -1,9 +1,8 @@
-(ns nsfw-site.demos
+(ns nsfw-site.demos.thelist
   (:require [nsfw.dom :as $]
             [nsfw.util :as util]
             [nsfw.bind :as bind]
-            [nsfw.affix :as affix]
-            [nsfw-site.demos.todo-redux :as redux]))
+            [nsfw.affix :as affix]))
 
 (defn render-item [item]
   (let [$el ($/node [:li.item
@@ -33,7 +32,6 @@
 (defn todo-input [!items]
   (let [$el ($/node [:div.clearfix
                      [:input.form-control {:type "text"
-                                           :autofocus "autofocus"
                                            :placeholder "Add Todo Item"}]
                      [:button.btn.btn-success.pull-right "Add"]])]
     ($/keyup ($/query $el :input)
@@ -61,7 +59,7 @@
                                  :color :white}))
       ($/mouseout #($/style %2 {:background-color nil
                                 :color :black}))
-      ($/append-to ($/query :#example1))))
+      ($/append-to ($/query :#the-list-example-1))))
 
 (defn example2 []
   (-> (let [data (atom 0)
@@ -75,12 +73,8 @@
   (affix/el ($/query :.demo-nav) 200)
   (example1)
   (example2)
-  (.highlight js/SyntaxHighlighter)
   (-> ($/query :#todoapp)
       ($/append (todo-app (atom ["the quick"
                                  "brown fox"
                                  "jumps over the"
                                  "lazy dog"])))))
-
-(defn ^:export redux []
-  (redux/entry))

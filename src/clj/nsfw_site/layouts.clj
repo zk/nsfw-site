@@ -14,19 +14,6 @@
     [:li [:a {:href "/demos/the-list"} "Demos"]]
     [:li [:a {:href "/tools"} "Tools"]]]])
 
-(defn main
-  [{:keys [title body]}]
-  (html/html5
-   [:head
-    [:meta {:name "viewport" :content "width=device-width, initial-scale=1.0"}]
-    (html/stylesheet "/css/bootstrap.min.css")
-    (html/stylesheet "/css/app.css")
-    [:title (or title "NSFW -- The next-gen web framework.")]]
-   [:body
-    navbar
-    body
-    (html/script "/js/app.js")]))
-
 (defn intro [{:keys [title body]}]
   (html/html5
    [:head

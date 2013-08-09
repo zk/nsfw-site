@@ -24,7 +24,7 @@ templating DSL**.
 
     ;; Which Produces (mouse over to test):
 
-<div class="demo-example" id="example1"></div>
+<div class="demo-example" id="the-list-example-1"></div>
 
 
 ## Data-Binding Using Atoms

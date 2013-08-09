@@ -1,6 +1,6 @@
 (ns nsfw-site.app
   (:use [nsfw.util :only [log]])
-  (:require [nsfw.dom :as dom]
+  (:require [nsfw.dom :as $]
             [nsfw.bind :as bind]
             [nsfw.util :as util]
             [nsfw.storage :as storage]
@@ -12,7 +12,13 @@
             [nsfw.console :as console]
             [nsfw-site.anim :as anim]
             [nsfw-site.common :as common]
-            [nsfw-site.overview :as overview]))
+            [nsfw-site.overview :as overview]
+            [nsfw.affix :as affix]))
+
+(defn ^:export entry []
+  (affix/init))
+
+
 (comment
   ;; --
   (defn title->id
@@ -687,5 +693,4 @@
          (dom/append html5-geoloc)
          (dom/append bleed-box-example)
          (dom/append charts)
-         (dom/append [:div (repeat 10 [:br])]))
-  )
+         (dom/append [:div (repeat 10 [:br])])))

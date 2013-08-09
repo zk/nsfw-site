@@ -1,7 +1,73 @@
 (ns nsfw-site.intro
-  (:require [nsfw.http :as http]
-            [nsfw.html :as html]
-            [nsfw-site.layouts :as layouts]))
+  (:require [nsfw.html :as html]
+            [nsfw]))
+
+(defn
+  ^{:comp-tag :masthead}
+  masthead [opts body]
+  (let [{:keys [active-tab]} opts]
+    [:header.navbar.navbar-inverse
+     {:data-nsfw-component :masthead}
+     [:a.navbar-brand {:href "/"}
+      [:h1
+       [:span.nsfw-icon
+        ;; alembic
+        "⚗"] "NSFW"]]
+     [:ul.navbar-nav.nav.pull-right
+      [:li {:class (when (= :home active-tab) "active")}
+       [:a {:href "/"} "Home"]]
+      [:li {:class (when (= :demos active-tab) "active")}
+       [:a {:href "/demos/the-list"} "Demos"]]
+      [:li {:class (when (= :tools active-tab) "active")}
+       [:a {:href "/tools"} "Tools"]]]]))
+
+(defn
+  ^{:comp-tag :default-head}
+  default-head
+  [{:keys [title]} body]
+  [:head
+   [:meta {:name "viewport" :content "width=device-width, initial-scale=1.0"}]
+   (html/stylesheet "/css/bootstrap.min.css")
+   (html/stylesheet "/css/app.css")
+   (html/script "/js/app.js")
+   [:title (or title "NSFW -- The next-gen web framework.")]])
+
+
+(defn
+  ^{:comp-tag :default-footer}
+  default-footer [opts body]
+  [:footer
+   [:div.row
+    [:div.col-lg-4
+     "Brought to you by "
+     [:a {:href "https://twitter.com/heyzk"} "@heyzk"]
+     "."]
+    [:div.col-lg-4]
+    [:div.col-lg-4]]])
+
+(defn
+  ^{:comp-tag :markdown}
+  markdown [{:keys [src]} body]
+  [:div.row
+   [:div.col-lg-12
+    (when src
+      (-> src
+          slurp
+          html/markdown))]])
+
+(defn
+  ^{:comp-tag :page-body}
+  page-body
+  [{:keys [class active-tab scripts js-entry]} body]
+  [:body
+   {:class class}
+   [:masthead {:active-tab active-tab}]
+   body
+   #_[:default-footer]
+   (map html/script scripts)
+   (when js-entry
+     [:script {:type "text/javascript"}
+      js-entry])])
 
 (def index-body
   [:div.intro-body.container
@@ -65,23 +131,49 @@
 (defn
   ^{:route "/"}
   index [r]
-  (-> {:title "NSFW -- For the love of god, don't use this."
-       :body index-body}
-      layouts/intro
-      http/html))
+  (nsfw/render
+   [:default-head
+    {:title "No Such Framework"}]
+   [:page-body
+    {:class "page-intro"
+     :active-tab :home}
+    [:div.bleed-box
+     [:div.full-bleed {:style "background-image: url('/img/dog3.jpg');"}]
+     [:div.bleed-box-content
+      [:div.hero-content
+       [:h2 "Get web stuff done with Clojure"]
+       [:p
+        "NSFW is a framework that optimizes for introspection and "
+        "understanding, that helps you build modern webapps using "
+        "HTML5, CSS3, and Clojure."]
+       [:p "Super-extra alpha."]]]]
+    index-body]))
 
 (defn
-  ^{:route "/about"}
-  about [r]
-  (-> {:body (str "ABOUT!!!!!!!"
-                  " "
-                  (:route r))}
-      layouts/main
-      http/html))
-
-(defn
-  ^{:route "/getting-started"}
-  getting-started [r]
-  (-> {:body "GETTING STARTED !!!!!"}
-      layouts/main
-      http/html))
+  ^{:route "/styleguide"}
+  lib [r]
+  (nsfw/render
+   [:default-head {:title "Component Styleguide"}]
+   [:page-body
+    {:class "library"}
+    [:div.container
+     [:h1 "Component Styleguide"]
+     [:hr]
+     [:h2 "Masthead"]
+     [:pre "[:masthead {:active-tab :home}]"]
+     [:div.libcont
+      [:masthead]
+      [:br]
+      [:masthead {:active-tab :home}]]
+     [:br]
+     [:h2 "Footer"]
+     [:div.libcont
+      [:default-footer]]
+     [:br]
+     [:div.demo-nav-container
+      [:h2 "Demo Nav"]
+      [:div.libcont
+       [:demo-nav]
+       [:demo-nav {:tab :the-list}]
+       [:demo-nav {:tab :the-list-redux}]]]
+     (repeat 100 [:br])]]))
