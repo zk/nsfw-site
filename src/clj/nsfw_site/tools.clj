@@ -1,7 +1,6 @@
 (ns nsfw-site.tools
   (:require [nsfw.html :as html]
             [nsfw.http :as http]
-            [nsfw-site.layouts :as layouts]
             [nsfw]))
 
 (defn
