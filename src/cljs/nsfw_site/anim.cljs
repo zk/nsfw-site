@@ -8,7 +8,7 @@
 
 (defn header-comp [title content example]
   [:header.navbar.container
-   [:h1 header-brand title]])
+   [:h1.header-brand title]])
 
 (defn container-comp [& content]
   [:div.container
@@ -48,7 +48,7 @@
            500)
           el))]
      [:div.col.span6
-      example]]
+      #_example]]
     [:div.row
      [:h2 "Examples"]]
     (test/section

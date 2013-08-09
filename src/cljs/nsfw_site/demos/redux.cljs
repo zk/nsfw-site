@@ -20,9 +20,6 @@
 
 (defn ^:export main []
   (affix/init)
-
-  ($/build)
-
   #_($/append ($/query :#the-list-redux)
               (:$el
                ($/build
