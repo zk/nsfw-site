@@ -30,8 +30,7 @@
    (html/stylesheet "/css/bootstrap.min.css")
    (html/stylesheet "/css/app.css")
    (html/script "/js/app.js")
-   [:title (or title "NSFW -- The next-gen web framework.")]])
-
+   [:title (or title "No Such Framework")]])
 
 (defn
   ^{:comp-tag :default-footer}
@@ -132,8 +131,7 @@
   ^{:route "/"}
   index [r]
   (nsfw/render
-   [:default-head
-    {:title "No Such Framework"}]
+   [:default-head]
    [:page-body
     {:class "page-intro"
      :active-tab :home}
