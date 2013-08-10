@@ -46,12 +46,18 @@
   default-footer [opts body]
   [:footer
    [:div.row
-    [:div.col-lg-4
-     "Brought to you by "
-     [:a {:href "https://twitter.com/heyzk"} "@heyzk"]
-     "."]
-    [:div.col-lg-4]
-    [:div.col-lg-4]]])
+    [:div.col-lg-9
+     [:p "NSFW -- A Next-Gen Web Framework"]
+     [:p
+      "Brought to you by "
+      [:a {:href "https://twitter.com/heyzk"} "@heyzk"]
+      ", and the letters G, S, and D."]]
+    [:div.col-lg-3
+     [:div
+      [:p
+       [:i.icon-github]
+       [:a {:href "#"} "GitHub"]]
+      [:p.quote "Do what you feel in your heart to be right, for you'll be criticized anyway."]]]]])
 
 (defn
   ^{:comp-tag :markdown}
@@ -132,7 +138,7 @@
      [:section
       [:p "All NSFW components are tested on a wide range of screen sizes for mobile bliss. The base CSS for NSFW is brought to you by " [:a {:href "http://getbootstrap.com"} "Bootstrap"] ", so you know your styling will stay future-proof."]]]
     [:div.col-lg-6
-     [:img {:src "http://f.cl.ly/items/1c2N0X3n2h473w3G3L0f/Screen%20Shot%202013-07-29%20at%2012.37.46%20AM.png"}]]]
+     [:img {:src "/img/mobile-sizes.png"}]]]
    [:br]
    [:br]
    [:br]])
