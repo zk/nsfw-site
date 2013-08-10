@@ -211,12 +211,11 @@
          "Componentization gets you a styleguide for free. Your design friends will love this."]]
        [:hr]]]
      [:div.row
-      [:div.col-lg-2
-       [:sub-nav
-        [:nav-item {:href "#clj"} "clj"]
-        [:nav-item {:href "#cljs"} "cljs"]]]
-      [:div.col-lg-10
-       [:h1 "Clojure-Generated Components"]
+      #_[:div.col-lg-2
+         [:sub-nav
+          [:nav-item {:href "#clj"} "clj"]
+          [:nav-item {:href "#cljs"} "cljs"]]]
+      [:div.col-lg-12
        [:h2 "Masthead"]
        [:component-demo
         [:masthead {:active-tab :home}]]
@@ -241,5 +240,4 @@
         [:h2 "Markdown"]
         [:p "Easily render a markdown document."]
         [:component-demo
-         [:markdown {:src "src/md/styleguide-demo.md"}]]]]]
-     (repeat 100 [:br])]]))
+         [:markdown {:src "src/md/styleguide-demo.md"}]]]]]]]))
