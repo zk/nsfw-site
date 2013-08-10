@@ -1,6 +1,13 @@
 (ns nsfw-site.intro
-  (:require [nsfw.html :as html]
+  (:require [clojure.string :as str]
+            [nsfw.html :as html]
+            [nsfw.util :as util]
             [nsfw]))
+
+(defn escape [s]
+  (-> s
+      (str/replace #"<" "&lt;")
+      (str/replace #">" "&gt;")))
 
 (defn
   ^{:comp-tag :masthead}
@@ -19,7 +26,9 @@
       [:li {:class (when (= :demos active-tab) "active")}
        [:a {:href "/demos/the-list"} "Demos"]]
       [:li {:class (when (= :tools active-tab) "active")}
-       [:a {:href "/tools"} "Tools"]]]]))
+       [:a {:href "/tools"} "Tools"]]
+      [:li {:class (when (= :styleguide active-tab) "active")}
+       [:a {:href "/styleguide"} "Styleguide"]]]]))
 
 (defn
   ^{:comp-tag :default-head}
@@ -63,7 +72,8 @@
    [:masthead {:active-tab active-tab}]
    body
    #_[:default-footer]
-   (map html/script scripts)
+   (when-not (empty? scripts)
+     (map html/script scripts))
    (when js-entry
      [:script {:type "text/javascript"}
       js-entry])])
@@ -148,30 +158,57 @@
     index-body]))
 
 (defn
+  ^{:comp-tag :component-preview}
+  component-preview [opts body]
+  [:pre (util/pp-str (->> body
+                          nsfw/apply-comps
+                          first))])
+
+(defn
+  ^{:comp-tag :component-demo}
+  component-demo [opts body]
+  [:div
+   [:pre (-> body first util/pp-str escape)]
+   [:div.libcont
+    body]
+   [:pre (-> body first nsfw/apply-comps util/pp-str escape)]])
+
+
+(defn
   ^{:route "/styleguide"}
   lib [r]
   (nsfw/render
-   [:default-head {:title "Component Styleguide"}]
+   [:default-head
+    {:title "NSFW Component Styleguide"}]
    [:page-body
-    {:class "library"}
+    {:class "library"
+     :active-tab :styleguide}
     [:div.container
-     [:h1 "Component Styleguide"]
+     [:div
+      [:h1 "Component Styleguide"]
+      [:p.lead
+       "Componentization gets you a styleguide for free. Your design friends will love this."]]
      [:hr]
      [:h2 "Masthead"]
-     [:pre "[:masthead {:active-tab :home}]"]
-     [:div.libcont
-      [:masthead]
-      [:br]
+     [:component-demo
       [:masthead {:active-tab :home}]]
      [:br]
      [:h2 "Footer"]
-     [:div.libcont
+     [:component-demo
       [:default-footer]]
-     [:br]
      [:div.demo-nav-container
       [:h2 "Demo Nav"]
       [:div.libcont
        [:demo-nav]
        [:demo-nav {:tab :the-list}]
        [:demo-nav {:tab :the-list-redux}]]]
+     [:div.demo-page-container
+      [:h2 "Demo Page"]
+      [:component-demo
+       [:demo [:h2 "Content Goes Here"]]]]
+     [:div
+      [:h2 "Markdown"]
+      [:p "Easily render a markdown document."]
+      [:component-demo
+       [:markdown {:src "src/md/styleguide-demo.md"}]]]
      (repeat 100 [:br])]]))
