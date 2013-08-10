@@ -71,7 +71,7 @@
    {:class class}
    [:masthead {:active-tab active-tab}]
    body
-   #_[:default-footer]
+   [:default-footer]
    (when-not (empty? scripts)
      (map html/script scripts))
    (when js-entry
@@ -168,11 +168,30 @@
   ^{:comp-tag :component-demo}
   component-demo [opts body]
   [:div
-   [:pre (-> body first util/pp-str escape)]
+   [:pre
+    (-> body first util/pp-str escape)
+    [:div.tag "tag"]]
    [:div.libcont
-    body]
-   [:pre (-> body first nsfw/apply-comps util/pp-str escape)]])
+    body
+    [:div.tag "preview"]]
+   [:pre
+    (-> body first nsfw/apply-comps util/pp-str escape)
+    [:div.tag "html"]]])
 
+(defn
+  ^{:comp-tag :sub-nav}
+  sub-nav [{:keys [data-offset-top]} body]
+  [:ul.nav.sub-nav
+   {:data-offset-top (or data-offset-top 200)
+    :data-spy "affix"}
+   body])
+
+(defn
+  ^{:comp-tag :nav-item}
+  nav-item [{:keys [active href]} body]
+  [:li {:class (when active "active")}
+   [:a {:href href}
+    body]])
 
 (defn
   ^{:route "/styleguide"}
@@ -184,31 +203,43 @@
     {:class "library"
      :active-tab :styleguide}
     [:div.container
-     [:div
-      [:h1 "Component Styleguide"]
-      [:p.lead
-       "Componentization gets you a styleguide for free. Your design friends will love this."]]
-     [:hr]
-     [:h2 "Masthead"]
-     [:component-demo
-      [:masthead {:active-tab :home}]]
-     [:br]
-     [:h2 "Footer"]
-     [:component-demo
-      [:default-footer]]
-     [:div.demo-nav-container
-      [:h2 "Demo Nav"]
-      [:div.libcont
-       [:demo-nav]
-       [:demo-nav {:tab :the-list}]
-       [:demo-nav {:tab :the-list-redux}]]]
-     [:div.demo-page-container
-      [:h2 "Demo Page"]
-      [:component-demo
-       [:demo [:h2 "Content Goes Here"]]]]
-     [:div
-      [:h2 "Markdown"]
-      [:p "Easily render a markdown document."]
-      [:component-demo
-       [:markdown {:src "src/md/styleguide-demo.md"}]]]
+     [:div.row
+      [:div.col-lg-12
+       [:div
+        [:h1 "Component Styleguide"]
+        [:p.lead
+         "Componentization gets you a styleguide for free. Your design friends will love this."]]
+       [:hr]]]
+     [:div.row
+      [:div.col-lg-2
+       [:sub-nav
+        [:nav-item {:href "#clj"} "clj"]
+        [:nav-item {:href "#cljs"} "cljs"]]]
+      [:div.col-lg-10
+       [:h1 "Clojure-Generated Components"]
+       [:h2 "Masthead"]
+       [:component-demo
+        [:masthead {:active-tab :home}]]
+       [:br]
+       [:h2 "Footer"]
+       [:component-demo
+        [:default-footer]]
+       [:div.demo-nav-container
+        [:h2 "Demo Nav"]
+        [:div.libcont
+         [:demo-nav]
+         [:demo-nav {:tab :the-list}]
+         [:demo-nav {:tab :the-list-redux}]]]
+       [:div.demo-page-container
+        [:h2 "Demo Page"]
+        [:component-demo
+         [:demo
+          {:tab :the-list
+           :js-entry "/* ex: nsfw_site.demos.entry(); */"}
+          [:h2 "Content Goes Here"]]]]
+       [:div
+        [:h2 "Markdown"]
+        [:p "Easily render a markdown document."]
+        [:component-demo
+         [:markdown {:src "src/md/styleguide-demo.md"}]]]]]
      (repeat 100 [:br])]]))

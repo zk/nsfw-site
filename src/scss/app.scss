@@ -36,7 +36,7 @@ h5 {
   margin-bottom: 0.2em;
 }
 
-em {
+strong {
   font-weight: bold;
   font-style: normal;
 }
@@ -44,6 +44,14 @@ em {
 code {
   padding-top: 1px;
   padding-bottom: 1px;
+}
+
+pre {
+  border-radius: 0;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border: none;
+  background-color: #fafafa;
 }
 
 .clear { clear: both; }
@@ -733,7 +741,7 @@ table.params td {
 }
 
 @media screen and (min-width: 991px) {
-  .demo-nav.affix {
+  .affix {
     position: fixed;
     top: 20px;
     width: 212.5px;
@@ -755,10 +763,11 @@ footer {
 }
 
 .library {
-
   .libcont {
     background-image: url('/img/bg-checkers.png');
     padding: 1em;
+    margin-bottom: 2em;
+    position: relative;
   }
 
   .demo-nav-container {
@@ -773,11 +782,30 @@ footer {
       margin-right: 1em;
     }
   }
+
+  pre {
+    margin-bottom: 2em;
+    position: relative;
+  }
+
+  .tag {
+    font-size: 11px;
+    right: 0px;
+    bottom: -16px;
+    font-family: 'Helvetica Neue', Helvetica, sans-serif;
+    position: absolute;
+    color: #ccc;
+    font-weight: 300;
+    padding-left: 4px;
+    padding-right: 4px;
+    border-radius: 3px;
+  }
 }
 
 // Library
 
-.demo-nav {
+.demo-nav,
+.sub-nav {
   border-left: solid #eee 1px;
   margin-bottom: 1em;
   background-color: white;
