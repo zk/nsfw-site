@@ -55,10 +55,41 @@ pre {
   background-color: #fafafa;
 }
 
+a {
+  color: #6A93D4;
+}
+
+a:hover {
+  color: #6A93D4;
+}
+
 .clear { clear: both; }
 
 header {
-  background-color: black;
+  &.navbar.navbar-inverse {
+    background-color: black;
+
+    .navbar-nav > .active > a {
+      background-color: #A60400;
+      color: white;
+      // #447BD4;
+
+      color: white;
+    }
+
+    .navbar-nav a {
+      color: #ddd;
+      border-radius: 0px;
+    }
+
+    .navbar-nav a:hover {
+      color: white;
+      border-radius: 0px;
+    }
+
+  }
+
+
   color: white;
 
   &.navbar {
@@ -758,16 +789,20 @@ table.params td {
 
 footer {
   padding: 1em;
-  background-color: #eee;
+  background-color: #fafafa;
   color: #aaa;
   font-weight: 300;
   font-size: 0.9em;
+  border-top: solid #eee 1px;
 
   i {
     margin-right: 0.3em;
   }
 
   .quote {
+    padding-left: 0.5em;
+    margin-left: 0.3em;
+    border-left: solid #ccc 2px;
   }
 }
 
