@@ -32,6 +32,10 @@ body {
   background-color: #FEFEFE;
 }
 
+h1, h2, h3, h4, h5 {
+  color: #444;
+}
+
 h5 {
   font-size: 1.5em;
   margin-bottom: 0.2em;
@@ -172,6 +176,10 @@ header {
     right: 0;
     bottom: 0;
     min-height: 10em;
+  }
+
+  h1, h2, h3, h4, h5 {
+    color: white;
   }
 
   h1 {
