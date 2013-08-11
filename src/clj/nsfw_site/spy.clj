@@ -21,9 +21,7 @@
       (str/replace #"<" "&lt;")
       (str/replace #">" "&gt;")))
 
-(defn
-  ^{:route "/spy"}
-  spy [r]
+(nsfw/defroute "/spy" spy [r]
   (nsfw/render
    [:default-head]
    [:page-body

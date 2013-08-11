@@ -3,9 +3,7 @@
             [nsfw.http :as http]
             [nsfw]))
 
-(defn
-  ^{:route "/tools"}
-  index [r]
+(nsfw/defroute "/tools" index [r]
   (nsfw/render
    [:default-head]
    [:page-body

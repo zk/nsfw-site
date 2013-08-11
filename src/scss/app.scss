@@ -22,6 +22,16 @@ $concrete: #95A5A6;
 $clouds: #ECF0F1;
 $orange: #F39C12;
 
+$header-bg: #23292F;
+$footer-bg: #333;
+//#AC0818;
+$body-bg: #F3F5F6;
+$link-color: #00BDD9;
+$link-hl-color: #1FE1FF;
+$nav-item-bg: rgba(0,0,0,0.3);
+$bleed-content-bg: $header-bg;
+$call-out-bg: #e8e8e8;
+
 body, html {
   font-size: 1em;
   width: 100%;
@@ -29,7 +39,7 @@ body, html {
 }
 
 body {
-  background-color: #FEFEFE;
+  background-color: $body-bg;
 }
 
 h1, h2, h3, h4, h5 {
@@ -60,39 +70,43 @@ pre {
 }
 
 a {
-  color: #6A93D4;
+  color: $link-color; // #6A93D4;
 }
 
 a:hover {
-  color: #6A93D4;
+  color: $link-hl-color;
+}
+
+.container {
+  max-width: 940px;
 }
 
 .clear { clear: both; }
 
 header {
   &.navbar.navbar-inverse {
-    background-color: black;
+    background-color: $header-bg;
 
     .navbar-nav > .active > a {
-      background-color: #A60400;
-      color: white;
-      // #447BD4;
-
+      background-color: $nav-item-bg;
       color: white;
     }
 
+    li {
+      margin-right: 0.5em;
+    }
+
     .navbar-nav a {
-      color: #ddd;
       border-radius: 0px;
+      color: #eee;
     }
 
     .navbar-nav a:hover {
       color: white;
-      border-radius: 0px;
+      background-color: $nav-item-bg;
     }
 
   }
-
 
   color: white;
 
@@ -157,15 +171,18 @@ header {
 
 .row {
   margin-bottom: 1em;
+  margin-left: 2em;
+  margin-right: 2em;
 }
 
 .hero-content {
   padding: 40px;
-  background-color: rgba(0,0,0,0.9);
+  background-color: $bleed-content-bg;
   width: 45%;
   float: right;
   color: white;
   font-family: $copy-font;
+  font-weight: 400;
 
   @media screen and (max-width: 768px) {
     width: 101%;
@@ -217,10 +234,6 @@ header {
     opacity: 1;
     color: black;
   }
-}
-
-.page-lead {
-  border-bottom: solid #ccc 1px;
 }
 
 .glyph {
@@ -339,9 +352,6 @@ header {
   border: $stage-border;
   padding: 20px;
   margin-bottom: 1em;
-}
-
-div.html-example {
 }
 
 .example h1,
@@ -630,11 +640,10 @@ table.params td {
   }
 
   .call-out {
-    background-color: #fafafa;
+    background-color: $call-out-bg;
     padding: 1em;
     margin-top: 2em;
     margin-bottom: 3em;
-    border: solid #ddd 1px;
   }
 
   .clojure-logo {
@@ -694,17 +703,6 @@ table.params td {
 
   .col-lg-6 {
     margin-bottom: 1em;
-  }
-
-  .demo-content {
-
-    h1:first-child {
-      margin-top: 0em;
-    }
-
-    h1, h2, h3, h4, h5 {
-      margin-top: 1em;
-    }
   }
 
   .demo-example {
@@ -797,20 +795,25 @@ table.params td {
 
 footer {
   padding: 1em;
-  background-color: #fafafa;
+  background-color: $footer-bg;
   color: #aaa;
   font-weight: 300;
   font-size: 0.9em;
-  border-top: solid #eee 1px;
+
+  a {
+    color: $link-color;
+  }
 
   i {
     margin-right: 0.3em;
   }
 
-  .quote {
-    padding-left: 0.5em;
-    margin-left: 0.3em;
-    border-left: solid #ccc 2px;
+  .quote:before {
+    content: "“";
+  }
+
+  .quote:after {
+    content: "”";
   }
 }
 
@@ -858,17 +861,34 @@ footer {
 
 .demo-nav,
 .sub-nav {
-  border-left: solid #eee 1px;
   margin-bottom: 1em;
-  background-color: white;
-  //border-radius: 3px;
+  background-color: #DCE0E5;
+
+  a {
+    color: black;
+  }
+
+  li a:hover {
+    background-color: rgba(0,0,0,0.2);
+  }
+
+  li:first-child {
+    //    border-radius: 4px 4px 0 0;
+  }
+
+  li:last-child {
+    //    border-radius: 0 0 4px 4px;
+  }
+
+  li:hover {
+    background-color: rgba(255,255,255,0.05);
+  }
 
   li.active {
-    background-color: #f8f8f8;
+    background-color: rgba(0,0,0,0.09);
+    display: block;
   }
 }
-
-
 
 .page-repl {
   .console-entry {
@@ -906,4 +926,19 @@ footer {
   h4 {
     margin-bottom: 1em;
   }
+}
+
+.demo-content {
+  h1:first-child {
+    margin-top: 0em;
+  }
+
+  h1, h2, h3, h4, h5 {
+    margin-top: 1em;
+  }
+}
+
+
+.page-lead {
+  border-bottom: solid #B9C2CA 1px;
 }

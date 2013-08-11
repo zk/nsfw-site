@@ -9,9 +9,7 @@
       (str/replace #"<" "&lt;")
       (str/replace #">" "&gt;")))
 
-(defn
-  ^{:comp-tag :masthead}
-  masthead [opts body]
+(nsfw/defcomp masthead [opts body]
   (let [{:keys [active-tab]} opts]
     [:header.navbar.navbar-inverse
      {:data-nsfw-component :masthead}
@@ -24,16 +22,13 @@
       [:li {:class (when (= :home active-tab) "active")}
        [:a {:href "/"} "Home"]]
       [:li {:class (when (= :demos active-tab) "active")}
-       [:a {:href "/demos/the-list"} "Demos"]]
+       [:a {:href "/demos/autoload"} "Demos"]]
       [:li {:class (when (= :tools active-tab) "active")}
        [:a {:href "/tools"} "Tools"]]
       [:li {:class (when (= :styleguide active-tab) "active")}
        [:a {:href "/styleguide"} "Styleguide"]]]]))
 
-(defn
-  ^{:comp-tag :default-head}
-  default-head
-  [{:keys [title]} body]
+(nsfw/defcomp default-head [{:keys [title]} body]
   [:head
    [:meta {:name "viewport" :content "width=device-width, initial-scale=1.0"}]
    (html/stylesheet "/css/bootstrap.min.css")
@@ -41,9 +36,7 @@
    (html/script "/js/app.js")
    [:title (or title "No Such Framework")]])
 
-(defn
-  ^{:comp-tag :default-footer}
-  default-footer [opts body]
+(nsfw/defcomp default-footer [opts body]
   [:footer
    [:div.row
     [:div.col-lg-9
@@ -56,12 +49,9 @@
      [:div
       [:p
        [:i.icon-github]
-       [:a {:href "#"} "GitHub"]]
-      [:p.quote "Do what you feel in your heart to be right, for you'll be criticized anyway."]]]]])
+       [:a {:href "#"} "GitHub"]]]]]])
 
-(defn
-  ^{:comp-tag :markdown}
-  markdown [{:keys [src]} body]
+(nsfw/defcomp markdown [{:keys [src]} body]
   [:div.row
    [:div.col-lg-12
     (when src
@@ -69,10 +59,7 @@
           slurp
           html/markdown))]])
 
-(defn
-  ^{:comp-tag :page-body}
-  page-body
-  [{:keys [class active-tab scripts js-entry]} body]
+(nsfw/defcomp page-body [{:keys [class active-tab scripts js-entry]} body]
   [:body
    {:class class}
    [:masthead {:active-tab active-tab}]
@@ -143,8 +130,7 @@
    [:br]
    [:br]])
 
-(defn
-  ^{:route "/"}
+(nsfw/defroute "/"
   index [r]
   (nsfw/render
    [:default-head]
@@ -163,16 +149,12 @@
        [:p "Super-extra alpha."]]]]
     index-body]))
 
-(defn
-  ^{:comp-tag :component-preview}
-  component-preview [opts body]
+(nsfw/defcomp component-preview [opts body]
   [:pre (util/pp-str (->> body
                           nsfw/apply-comps
                           first))])
 
-(defn
-  ^{:comp-tag :component-demo}
-  component-demo [opts body]
+(nsfw/defcomp component-demo [opts body]
   [:div
    [:pre
     (-> body first util/pp-str escape)
@@ -184,24 +166,18 @@
     (-> body first nsfw/apply-comps util/pp-str escape)
     [:div.tag "html"]]])
 
-(defn
-  ^{:comp-tag :sub-nav}
-  sub-nav [{:keys [data-offset-top]} body]
+(nsfw/defcomp sub-nav [{:keys [data-offset-top]} body]
   [:ul.nav.sub-nav
    {:data-offset-top (or data-offset-top 200)
     :data-spy "affix"}
    body])
 
-(defn
-  ^{:comp-tag :nav-item}
-  nav-item [{:keys [active href]} body]
+(nsfw/defcomp nav-item [{:keys [active href]} body]
   [:li {:class (when active "active")}
    [:a {:href href}
     body]])
 
-(defn
-  ^{:route "/styleguide"}
-  lib [r]
+(nsfw/defroute "/styleguide" styleguide [r]
   (nsfw/render
    [:default-head
     {:title "NSFW Component Styleguide"}]
@@ -211,11 +187,10 @@
     [:div.container
      [:div.row
       [:div.col-lg-12
-       [:div
+       [:div.page-lead
         [:h1 "Component Styleguide"]
         [:p.lead
-         "Componentization gets you a styleguide for free. Your design friends will love this."]]
-       [:hr]]]
+         "Componentization gets you a styleguide for free. Your design friends will love this."]]]]
      [:div.row
       #_[:div.col-lg-2
          [:sub-nav

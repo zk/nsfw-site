@@ -3,8 +3,7 @@
             [nsfw.html :as html]
             [clojure.string :as str]))
 
-(defn
-  ^{:route "/repl"}
+(nsfw/defroute "/repl"
   repl [r]
   (nsfw/render
    [:default-head]
@@ -48,8 +47,7 @@
 
 (defonce chunks (atom '()))
 
-(defn
-  ^{:route "/repl/data"}
+(nsfw/defroute "/repl/data"
   repl-data [{:keys [params]}]
   (let [now (System/currentTimeMillis)
         since (Long/parseLong (:since params))
