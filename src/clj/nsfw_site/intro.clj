@@ -23,8 +23,6 @@
        [:a {:href "/"} "Home"]]
       [:li {:class (when (= :demos active-tab) "active")}
        [:a {:href "/demos/autoload"} "Demos"]]
-      [:li {:class (when (= :tools active-tab) "active")}
-       [:a {:href "/tools"} "Tools"]]
       [:li {:class (when (= :styleguide active-tab) "active")}
        [:a {:href "/styleguide"} "Styleguide"]]]]))
 
