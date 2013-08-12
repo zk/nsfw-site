@@ -46,6 +46,10 @@ h1, h2, h3, h4, h5 {
   color: #444;
 }
 
+h1 {
+  margin-bottom: 5px;
+}
+
 h5 {
   font-size: 1.5em;
   margin-bottom: 0.2em;
@@ -99,6 +103,7 @@ header {
     .navbar-nav a {
       border-radius: 0px;
       color: #eee;
+      -webkit-font-smoothing: antialiased;
     }
 
     .navbar-nav a:hover {
@@ -782,7 +787,7 @@ table.params td {
   .affix {
     position: fixed;
     top: 20px;
-    width: 212.5px;
+    width: 189px;
   }
 }
 
@@ -929,7 +934,11 @@ footer {
 }
 
 .demo-content {
-  h1:first-child {
+  h1:first-child,
+  h2:first-child,
+  h3:first-child,
+  h4:first-child
+  {
     margin-top: 0em;
   }
 
@@ -941,4 +950,5 @@ footer {
 
 .page-lead {
   border-bottom: solid #B9C2CA 1px;
+  margin-bottom: 1em;
 }

@@ -19,7 +19,6 @@
              ($/node struct)))))
 
 (defn ^:export main []
-  (affix/init)
   #_($/append ($/query :#the-list-redux)
               (:$el
                ($/build

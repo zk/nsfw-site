@@ -1,5 +1,6 @@
 (ns nsfw-site.intro
   (:require [clojure.string :as str]
+            [clojure.zip :as zip]
             [nsfw.html :as html]
             [nsfw.util :as util]
             [nsfw]))
@@ -57,6 +58,11 @@
           slurp
           html/markdown))]])
 
+(defn sym->js [sym]
+  (-> sym
+      str
+      (str/replace #"-" "_")))
+
 (nsfw/defcomp page-body [{:keys [class active-tab scripts js-entry]} body]
   [:body
    {:class class}
@@ -67,7 +73,10 @@
      (map html/script scripts))
    (when js-entry
      [:script {:type "text/javascript"}
-      js-entry])])
+      (when js-entry
+        (if (symbol? js-entry)
+          (str (sym->js js-entry) "();")
+          js-entry))])])
 
 (def index-body
   [:div.intro-body.container
@@ -89,7 +98,7 @@
            NSFW provide convention, which helps you scale; in features, in users,
            and in team size."]
       [:p "Don't worry, we won't lock you in. Try NSFW out and you'll see
-           what you've been missing for so long."]]]
+           what you've been missing."]]]
     [:div.col-lg-6.images
      [:a {:href "http://clojure.org"}
       [:img.clojure-logo
@@ -105,25 +114,26 @@
       {:src "http://sass-lang.com/images/sass.gif"
        :width "120"
        :height "120"}]]]
-   [:div.row.good-design
-    [:div.col-lg-12
-     [:h2 "Clean Design Built-In"]]
-    [:div.col-lg-5
-     [:section
-      [:p "Easy-to-use grid system, sane font defaults. NSFW makes it easy to
-           make great looking apps. NSFW is built on great technologies like Bootstrap."]]]
-    [:div.col-lg-7.images
-     [:img {:src "http://f.cl.ly/items/1U0J0J300b110z0R0S02/Screen%20Shot%202013-01-18%20at%205.32.09%20PM.png"}]
-     [:img {:src "http://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Grid2aib.svg/250px-Grid2aib.svg.png"}]
-     [:img {:src "http://f.cl.ly/items/0T1a2j330V3V3t3x0e18/Screen%20Shot%202013-01-18%20at%205.33.34%20PM.png"}]]]
    [:div.row.mobile-optimized
     [:div.col-lg-12
      [:h2 "Mobile Optimized"]]
     [:div.col-lg-6
      [:section
-      [:p "All NSFW components are tested on a wide range of screen sizes for mobile bliss. The base CSS for NSFW is brought to you by " [:a {:href "http://getbootstrap.com"} "Bootstrap"] ", so you know your styling will stay future-proof."]]]
+      [:p "All NSFW components are tested on a wide range of screen sizes for mobile bliss. The base CSS for NSFW is brought to you by " [:a {:href "http://getbootstrap.com"} "Bootstrap"] ", so you know you're starting out right."]]]
     [:div.col-lg-6
      [:img {:src "/img/mobile-sizes.png"}]]]
+   [:div.row.getting-started
+    [:div.col-lg-12
+     [:h2 "Getting Started"]]
+    [:div.col-lg-6
+     [:section
+      ]]
+    [:div.col-lg-6
+     [:pre
+      "
+ (nsfw/app :server-port 8080
+           :autoload \"src/clj\")
+"]]]
    [:br]
    [:br]
    [:br]])

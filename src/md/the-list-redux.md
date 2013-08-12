@@ -1,4 +1,4 @@
-# The List (Redux)
+## The List (Redux)
 
 In the last example, The List was accomplished using direct
 manipulation of the DOM, and direct event binding.

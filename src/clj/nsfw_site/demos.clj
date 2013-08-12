@@ -67,6 +67,7 @@
   (nsfw/render
    [:default-head]
    [:demo
-    {:tab :autoload}
+    {:tab :autoload
+     :js-entry 'nsfw-site.app.entry}
     [:div#autoload
      [:markdown {:src "src/md/autoload.md"}]]]))
