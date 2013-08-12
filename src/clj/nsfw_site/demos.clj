@@ -7,12 +7,12 @@
     :data-spy "affix"}
    [:li {:data-tab :autoload
          :class (when (= :autoload tab) "active")}
-    [:a {:href "/demos/autoload"} "Autoload"]]
+    [:a {:href "/examples/autoload"} "Autoload"]]
    [:li {:data-tab :the-list
          :class (when (= :the-list tab) "active")}
-    [:a {:href "/demos/the-list"} "The List"]]
+    [:a {:href "/examples/the-list"} "The List"]]
    [:li.the-list-redux {:class (when (= :the-list-redux tab) "active")}
-    [:a {:href "/demos/the-list-redux"} "The List (Redux)"]]])
+    [:a {:href "/examples/the-list-redux"} "The List (Redux)"]]])
 
 (nsfw/defcomp demo [{:keys [tab js-entry]} body]
   [:page-body
@@ -32,7 +32,7 @@
      [:div.col-lg-9.demo-content
       body]]]])
 
-(nsfw/defroute "/demos/the-list"
+(nsfw/defroute "/examples/the-list"
   the-list [r]
   (nsfw/render
    [:default-head]
@@ -42,7 +42,7 @@
     [:div#the-list
      [:markdown {:src "src/md/the-list.md"}]]]))
 
-(nsfw/defroute "/demos/the-list-redux"
+(nsfw/defroute "/examples/the-list-redux"
   the-list-redux [r]
   (nsfw/render
    [:default-head]
@@ -52,7 +52,7 @@
     [:div#the-list
      [:markdown {:src "src/md/the-list-redux.md"}]]]))
 
-(nsfw/defroute "/demos/data-binding"
+(nsfw/defroute "/examples/data-binding"
   data-binding [r]
   (nsfw/render
    [:default-head]
@@ -62,7 +62,7 @@
     [:div#the-list
      [:markdown {:src "src/md/the-list-redux.md"}]]]))
 
-(nsfw/defroute "/demos/autoload"
+(nsfw/defroute "/examples/autoload"
   autoload [r]
   (nsfw/render
    [:default-head]

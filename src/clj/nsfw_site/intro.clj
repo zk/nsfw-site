@@ -22,8 +22,8 @@
      [:ul.navbar-nav.nav.pull-right
       [:li {:class (when (= :home active-tab) "active")}
        [:a {:href "/"} "Home"]]
-      [:li {:class (when (= :demos active-tab) "active")}
-       [:a {:href "/demos/autoload"} "Demos"]]
+      [:li {:class (when (= :examples active-tab) "active")}
+       [:a {:href "/examples/autoload"} "Examples"]]
       [:li {:class (when (= :styleguide active-tab) "active")}
        [:a {:href "/styleguide"} "Styleguide"]]]]))
 
