@@ -12,3 +12,4 @@ target
 /resources/public/css/todo.css
 /resources/public/js/app.js
 .gem
+.lein-repl-history
