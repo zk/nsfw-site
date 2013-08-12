@@ -125,14 +125,18 @@
    [:div.row.getting-started
     [:div.col-lg-12
      [:h2 "Getting Started"]]
-    [:div.col-lg-6
+    [:div.col-lg-5
      [:section
-      ]]
-    [:div.col-lg-6
+      [:p
+       "It's easy to get started with NSFW. We've got a starter project hosted "
+       [:a {:href "https://github.com/zk/nsfw-starter"} "here"]
+       "."]]]
+    [:div.col-lg-7
      [:pre
       "
- (nsfw/app :server-port 8080
-           :autoload \"src/clj\")
+$ git clone https://github.com/zk/nsfw-starter myapp
+$ cd myapp
+$ bin/dev
 "]]]
    [:br]
    [:br]
