@@ -1,4 +1,4 @@
-## The List
+## The List <a id="intro"></a>
 
 **TL;DR** <a href="#putting-it-together">Skip to the example</a>
 
@@ -27,7 +27,7 @@ templating DSL**.
 <div class="demo-example" id="the-list-example-1"></div>
 
 
-## Data-Binding Using Atoms
+## Data-Binding Using Atoms <a id="data-binding"></a>
 
 Add **data-binding** into the mix with **DOM manipulation** and
 **event-binding**, and you've got the Holy Trinity of web
@@ -55,7 +55,8 @@ Binding functionality is provided by the `nsfw.bind` namespace.
 <div class="demo-example" id="example2" style="text-align: center;"></div>
 
 
-## <span id="putting-it-together">Putting It All Together</a>
+
+## Putting It All Together <a id="all-together"></a>
 
 Here's a quick todo app demo using imperitive dom manipulation and
 event binding. It's quick, it's dirty, and it works.
@@ -63,7 +64,7 @@ event binding. It's quick, it's dirty, and it works.
 <div id="todoapp" class="demo-example"></div>
 
 
-### todo.cljs (minus non-todo parts)
+### todo.cljs (minus non-todo parts) <a id="code"></a>
 
     (ns nsfw-site.demos.todo
       (:require [nsfw.dom :as $]

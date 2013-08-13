@@ -1,7 +1,8 @@
 (ns nsfw-site.demos.redux
   (:require [nsfw.util :as util]
             [nsfw.affix :as affix]
-            [nsfw.dom :as $]))
+            [nsfw.dom :as $]
+            [nsfw.scroll-to :as scroll-to]))
 
 (defn list-redux []
   (-> {:init (fn [opts]
@@ -19,6 +20,8 @@
              ($/node struct)))))
 
 (defn ^:export main []
+  (scroll-to/init)
+  (affix/init)
   #_($/append ($/query :#the-list-redux)
               (:$el
                ($/build

@@ -1,4 +1,4 @@
-## Autoload
+## Autoload <a id="intro"></a>
 
 Many of the constructs provided by NSFW work off of var metadata. For
 example, a routes are picked up by the framework by attaching a piece
@@ -20,7 +20,7 @@ You have to **specify an `:autoload` path when starting a NSFW app
 using the `nsfw/app` function for these routes, components, etc to
 work correctly**.
 
-## Under The Hood
+## Under The Hood <a id="background"></a>
 
 There's a bit of configuration that needs to happen for this to work
 smoothly, namely, **route-defining vars need to be loaded, and NSFW

@@ -2,7 +2,8 @@
   (:require [nsfw.dom :as $]
             [nsfw.util :as util]
             [nsfw.bind :as bind]
-            [nsfw.affix :as affix]))
+            [nsfw.affix :as affix]
+            [nsfw.scroll-to :as scroll-to]))
 
 (defn render-item [item]
   (let [$el ($/node [:li.item
@@ -70,6 +71,7 @@
       ($/append-to ($/query :#example2))))
 
 (defn ^:export main []
+  (scroll-to/init)
   (affix/el ($/query :.demo-nav) 200)
   (example1)
   (example2)

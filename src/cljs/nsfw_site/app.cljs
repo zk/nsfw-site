@@ -13,7 +13,9 @@
             [nsfw-site.anim :as anim]
             [nsfw-site.common :as common]
             [nsfw-site.overview :as overview]
-            [nsfw.affix :as affix]))
+            [nsfw.affix :as affix]
+            [nsfw.scroll-to :as scroll-to]))
 
 (defn ^:export entry []
-  (affix/init))
+  (affix/init)
+  (scroll-to/init))

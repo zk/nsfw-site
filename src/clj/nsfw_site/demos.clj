@@ -1,50 +1,7 @@
 (ns nsfw-site.demos
   (:require [nsfw]))
 
-
-
-
-(defn make-tab [{:keys [name target-tab selected-tab href on-page-nav]}]
-  (let [active? (= target-tab selected-tab)]
-    [:li {:class (when active? "active")}
-     [:a {:href href} name]
-     (when (and active? on-page-nav)
-       [:ul.on-page-nav
-        (map (fn [{:keys [href text]}]
-               [:li [:a {:href href} text]])
-             on-page-nav)])]))
-
-(nsfw/defcomp demo-nav [{:keys [tab on-page-nav]} body]
-  [:ul.nav.demo-nav
-   {:data-offset-top 200
-    :data-spy "affix"}
-   (map make-tab
-        [{:name "Autoload"
-          :target-tab :autoload
-          :selected-tab tab
-          :href "/examples/autoload"
-          :on-page-nav on-page-nav}
-         {:name "The List"
-          :target-tab :the-list
-          :selected-tab tab
-          :href "/examples/the-list"
-          :on-page-nav on-page-nav}
-         {:name "The List (Redux)"
-          :target-tab :the-list-redux
-          :selected-tab tab
-          :href "/examples/the-list-redux"
-          :on-page-nav on-page-nav}])
-
-   #_[:li.the-list-redux {:class (when (= :the-list-redux tab) "active")}
-    [:a {:href "/examples/the-list-redux"} "The List (Redux)"]
-    (when (and (= :the-list-redux tab)
-               on-page-nav)
-      [:ul.on-page-nav
-       (map (fn [{:keys [href text]}]
-              [:li [:a {:href href} text]])
-            on-page-nav)])]])
-
-(nsfw/defcomp demo [{:keys [tab js-entry nav]} body]
+(nsfw/defcomp demo [{:keys [tab js-entry nav subnav]} body]
   [:page-body
    {:class "page-demo"
     :active-tab :demos
@@ -54,95 +11,72 @@
     [:div.row
      [:div.col-lg-12
       [:div.page-lead
-       [:h1 "Demos"]
-       [:p.lead "Bite-size examples of the NSFW framework."]]]]
+       [:h1 "Examples"]
+       [:p.lead "Bite-size concepts from the NSFW framework."]]]]
     [:div.row
      [:div.col-lg-3
-      [:demo-nav {:tab tab}]]
+      [:ul.nav.demo-nav
+       {:data-offset-top 200
+        :data-spy "affix"}
+       (map (fn [{:keys [name tab-name href]}]
+              (let [active? (= tab tab-name)]
+                [:li {:class (when active? "active")}
+                 [:a {:href href} name]
+                 (when (and active? (not (empty? subnav)))
+                   [:ul.on-page-nav
+                    (map (fn [[href text]]
+                           [:li [:a.scroll-to {:href href} text]])
+                         subnav)])]))
+            nav)]]
      [:div.col-lg-9.demo-content
       body]]]])
 
-(def nav {"autoload"
-          {:name "Autoload"
+(def nav [{:path "autoload"
+           :name "Autoload"
            :md "src/md/autoload.md"
            :subnav [["#intro"       "Intro"]
-                    ["#background"  "Background"]]}
+                    ["#background"  "Background"]]
+           :js-entry 'nsfw-site.app.entry
+           :tab-name :autoload
+           :href "/examples/autoload"}
 
-          "the-list"
-          {:name "The List"
+          {:path "the-list"
+           :name "The List"
            :md "src/md/the-list.md"
-           :subnav [["#intro"       "Intro"]]
-           :js-entry 'nsfw-site.demos.thelist.main}
+           :subnav [["#intro"        "Intro"]
+                    ["#data-binding" "Data Binding"]
+                    ["#all-together" "All Together"]
+                    ["#code"         "Code"]]
+           :js-entry 'nsfw-site.demos.thelist.main
+           :tab-name :the-list
+           :href "/examples/the-list"}
 
-          "the-list-redux"
-          {:name "The List (Redux)"
+          {:path "the-list-redux"
+           :name "The List (Redux)"
            :md "src/md/the-list-redux.md"
-           :js-entry 'nsfw-site.demos.redux.main}})
+           :subnav [["#intro"          "Intro"]
+                    ["#starting-small" "Starting Small"]]
+           :js-entry 'nsfw-site.demos.redux.main
+           :tab-name :the-list-redux
+           :href "/examples/the-list-redux"}])
 
-(defn render-example-page [{:keys [name md subnav] :as page}]
+(defn render-example-page
+  [{:keys [name md subnav js-entry tab-name] :as page} nav]
   (nsfw/render
    [:default-head]
    [:demo
-
+    {:js-entry js-entry
+     :nav nav
+     :subnav subnav
+     :tab tab-name}
     [:markdown {:src md}]]))
 
 (nsfw/defroute "/examples/:example"
   examples [{:keys [route-params] :as r}]
   (let [example (:example route-params)
-        page-data (get nav example)]
+        page-data (->> nav
+                       (filter #(= example (:path %)))
+                       first)]
     (when page-data
       (-> page-data
-          render-example-page))))
-
-(nsfw/defroute "/examples/the-list"
-  the-list [r]
-  (nsfw/render
-   [:default-head]
-   [:demo
-    {:tab :the-list
-     :js-entry "nsfw_site.demos.thelist.main()"}
-
-    [:page-nav-item {:href "#intro"} "Intro"]
-    [:page-nav-item {:href "#data-binding"} "Data Binding"]
-    [:page-nav-item {:href "#all-together"} "All Together"]
-
-    [:div#the-list
-     [:markdown {:src "src/md/the-list.md"}]]]))
-
-(nsfw/defroute "/examples/the-list-redux"
-  the-list-redux [r]
-  (nsfw/render
-   [:default-head]
-   [:demo
-    {:tab :the-list-redux
-     :js-entry "nsfw_site.demos.redux.main()"
-     :on-page-nav [{:href "#intro"
-                    :text "Intro"}
-                   {:href "#starting-small"
-                    :text "Starting Small"}]}
-    [:div#the-list
-     [:markdown {:src "src/md/the-list-redux.md"}]]]))
-
-(nsfw/defroute "/examples/data-binding"
-  data-binding [r]
-  (nsfw/render
-   [:default-head]
-   [:demo
-    {:tab :the-list-redux
-     :js-entry "nsfw_site.demos.redux.main()"}
-    [:div#the-list
-     [:markdown {:src "src/md/the-list-redux.md"}]]]))
-
-(nsfw/defroute "/examples/autoload"
-  autoload [r]
-  (nsfw/render
-   [:default-head]
-   [:demo
-    {:tab :autoload
-     :js-entry 'nsfw-site.app.entry
-     :on-page-nav [{:href "#intro"
-                    :text "Intro"}
-                   {:href "#under-the-hood"
-                    :text "Background"}]}
-    [:div#autoload
-     [:markdown {:src "src/md/autoload.md"}]]]))
+          (render-example-page nav)))))

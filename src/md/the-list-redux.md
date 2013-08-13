@@ -1,4 +1,4 @@
-## The List (Redux)
+## The List (Redux) <a id="intro"></a>
 
 In the last example, The List was accomplished using direct
 manipulation of the DOM, and direct event binding.
@@ -20,7 +20,7 @@ Well, we've got you covered.
 In other words, NSFW scales up and down nicely.
 
 
-## Starting Small
+## Starting Small <a id="starting-small"></a>
 
 NSFW's goal is that you always know what's going on in your app. A big
 part of this is turning previously opaque processes like event firing
