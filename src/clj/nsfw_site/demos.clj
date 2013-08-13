@@ -31,7 +31,13 @@
      [:div.col-lg-9.demo-content
       body]]]])
 
-(def nav [{:path "autoload"
+(def nav [{:path "config"
+           :name "App Config"
+           :md "src/md/app-config.md"
+           :tab-name :app-config
+           :href "/examples/config"}
+
+          {:path "autoload"
            :name "Autoload"
            :md "src/md/autoload.md"
            :subnav [["#intro"       "Intro"]
