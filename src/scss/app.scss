@@ -867,35 +867,27 @@ footer {
 .demo-nav,
 .sub-nav {
   margin-bottom: 1em;
-  background-color: #DCE0E5;
+  background-color: #FAFAFA;
 
   a {
     color: black;
   }
 
   li a:hover {
-    background-color: rgba(0,0,0,0.2);
+    background-color: rgba(0,0,0,0.1);
   }
 
   & > li {
     text-transform: uppercase;
-    font-size: 0.8em;
-  }
-
-  li:first-child {
-    //    border-radius: 4px 4px 0 0;
-  }
-
-  li:last-child {
-    //    border-radius: 0 0 4px 4px;
+    font-size: 0.75em;
+    font-weight: bold
   }
 
   li:hover {
-    background-color: rgba(255,255,255,0.05);
   }
 
   li.active {
-    background-color: rgba(0,0,0,0.09);
+    background-color: rgba(0,0,0,0.07);
     display: block;
   }
 
@@ -904,6 +896,7 @@ footer {
     padding: 0;
     text-transform: none;
     padding-bottom: 1em;
+    font-weight: normal;
 
     li {
       list-style-type: none;

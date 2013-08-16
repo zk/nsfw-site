@@ -13,3 +13,4 @@ target
 /resources/public/js/app.js
 .gem
 .lein-repl-history
+out-js

@@ -23,9 +23,7 @@
       [:li {:class (when (= :home active-tab) "active")}
        [:a {:href "/"} "Home"]]
       [:li {:class (when (= :examples active-tab) "active")}
-       [:a {:href "/examples/autoload"} "Examples"]]
-      [:li {:class (when (= :styleguide active-tab) "active")}
-       [:a {:href "/styleguide"} "Styleguide"]]]]))
+       [:a {:href "/examples/config"} "Examples"]]]]))
 
 (nsfw/defcomp default-head [{:keys [title]} body]
   [:head
@@ -135,8 +133,11 @@
      [:pre
       "
 $ git clone https://github.com/zk/nsfw-starter myapp
+...
 $ cd myapp
 $ bin/dev
+...
+$ open http://localhost:5000
 "]]]
    [:br]
    [:br]

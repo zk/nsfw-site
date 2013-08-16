@@ -1,4 +1,7 @@
-## Autoload <a id="intro"></a>
+## Code Reloading <a id="intro"></a>
+
+A great development experience is a first-class concern for NSFW, we
+want you to see changes to your app as soon as you hit save.
 
 Many of the constructs provided by NSFW work off of var metadata. For
 example, a routes are picked up by the framework by attaching a piece

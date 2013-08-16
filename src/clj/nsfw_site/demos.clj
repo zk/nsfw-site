@@ -4,7 +4,7 @@
 (nsfw/defcomp demo [{:keys [tab js-entry nav subnav]} body]
   [:page-body
    {:class "page-demo"
-    :active-tab :demos
+    :active-tab :examples
     :script "/js/app.js"
     :js-entry js-entry}
    [:div.container
@@ -38,10 +38,10 @@
            :href "/examples/config"}
 
           {:path "autoload"
-           :name "Autoload"
+           :name "Code Reloading"
            :md "src/md/autoload.md"
            :subnav [["#intro"       "Intro"]
-                    ["#background"  "Background"]]
+                    ["#background"  "Under The Hood"]]
            :js-entry 'nsfw-site.app.entry
            :tab-name :autoload
            :href "/examples/autoload"}
@@ -61,7 +61,9 @@
            :name "The List (Redux)"
            :md "src/md/the-list-redux.md"
            :subnav [["#intro"          "Intro"]
-                    ["#starting-small" "Starting Small"]]
+                    ["#starting-small" "Starting Small"]
+                    ["#all-together"   "All Together"]
+                    ["#code"           "Code"]]
            :js-entry 'nsfw-site.demos.redux.main
            :tab-name :the-list-redux
            :href "/examples/the-list-redux"}])
@@ -71,7 +73,7 @@
   (nsfw/render
    [:default-head]
    [:demo
-    {:js-entry js-entry
+    {:js-entry (or js-entry 'nsfw-site.app.entry)
      :nav nav
      :subnav subnav
      :tab tab-name}

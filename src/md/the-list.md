@@ -124,4 +124,4 @@ event binding. It's quick, it's dirty, and it works.
 
 While succint and comparable to the equivilent JS code (length- & weight-wise), this isn't a very introspectable way to write your frontend code. It's difficult to grok, test, and maintain.
 
-For a more NSFW-idiomatic way to build this todo widget, see <a href="/demos/the-list-redux">here.</a>
+For a more NSFW-idiomatic way to build this todo widget, see <a href="/examples/the-list-redux">here.</a>
