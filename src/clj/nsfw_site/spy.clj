@@ -22,7 +22,7 @@
       (str/replace #">" "&gt;")))
 
 (nsfw/defroute "/spy" spy [r]
-  (nsfw/render
+  (nsfw/render-html
    [:default-head]
    [:page-body
     {:js-entry "nsfw_site.app.entry()"

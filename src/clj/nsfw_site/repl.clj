@@ -5,7 +5,7 @@
 
 (nsfw/defroute "/repl"
   repl [r]
-  (nsfw/render
+  (nsfw/render-html
    [:default-head]
    [:page-body
     {:js-entry "nsfw_site.repl.entry()"

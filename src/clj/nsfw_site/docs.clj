@@ -3,7 +3,7 @@
 
 (nsfw/defroute "/docs"
   docs [r]
-  (nsfw/render
+  (nsfw/render-html
    [:default-head]
    [:page-body
     [:div.container

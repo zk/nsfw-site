@@ -145,7 +145,7 @@ $ open http://localhost:5000
 
 (nsfw/defroute "/"
   index [r]
-  (nsfw/render
+  (nsfw/render-html
    [:default-head]
    [:page-body
     {:class "page-intro"
@@ -191,7 +191,7 @@ $ open http://localhost:5000
     body]])
 
 (nsfw/defroute "/styleguide" styleguide [r]
-  (nsfw/render
+  (nsfw/render-html
    [:default-head
     {:title "NSFW Component Styleguide"}]
    [:page-body
