@@ -103,6 +103,9 @@ Components are custom html snippets you define that expand out into
 full HTML blocks on rendering. Here's an example from this site, the
 `markdown` tag, which renders this page.
 
+NSFW Components are very much in the spirit of Google's Web
+Components, but much more rudamentary.
+
     ;; Component definition
     (nsfw/defcomp markdown [{:keys [src]} _]
       [:div.row
