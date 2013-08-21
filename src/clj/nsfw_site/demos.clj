@@ -1,7 +1,22 @@
 (ns nsfw-site.demos
   (:require [nsfw]))
 
-(nsfw/defcomp demo [{:keys [tab js-entry nav subnav]} body]
+(nsfw/defcomp demo-nav [{:keys [subnav tab]} _]
+  [:ul.nav.demo-nav
+   {:data-offset-top 200
+    :data-spy "affix"}
+   (map (fn [{:keys [name tab-name href]}]
+          (let [active? (= tab tab-name)]
+            [:li {:class (when active? "active")}
+             [:a {:href href} name]
+             (when (and active? (not (empty? subnav)))
+               [:ul.on-page-nav
+                (map (fn [[href text]]
+                       [:li [:a.scroll-to {:href href} text]])
+                     (partition 2 subnav))])]))
+        nav)])
+
+(nsfw/defcomp demo [{:keys [tab js-entry nav subnav] :as attrs} body]
   [:page-body
    {:class "page-demo"
     :active-tab :examples
@@ -15,19 +30,7 @@
        [:p.lead "Bite-size concepts from the NSFW framework."]]]]
     [:div.row
      [:div.col-lg-3
-      [:ul.nav.demo-nav
-       {:data-offset-top 200
-        :data-spy "affix"}
-       (map (fn [{:keys [name tab-name href]}]
-              (let [active? (= tab tab-name)]
-                [:li {:class (when active? "active")}
-                 [:a {:href href} name]
-                 (when (and active? (not (empty? subnav)))
-                   [:ul.on-page-nav
-                    (map (fn [[href text]]
-                           [:li [:a.scroll-to {:href href} text]])
-                         (partition 2 subnav))])]))
-            nav)]]
+      [:demo-nav attrs]]
      [:div.col-lg-9.demo-content
       body]]]])
 
