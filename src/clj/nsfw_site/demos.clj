@@ -26,22 +26,29 @@
                    [:ul.on-page-nav
                     (map (fn [[href text]]
                            [:li [:a.scroll-to {:href href} text]])
-                         subnav)])]))
+                         (partition 2 subnav))])]))
             nav)]]
      [:div.col-lg-9.demo-content
       body]]]])
 
-(def nav [{:path "config"
-           :name "App Config"
-           :md "src/md/app-config.md"
-           :tab-name :app-config
-           :href "/examples/config"}
+(def nav [{:path "getting-started"
+           :name "Getting Started"
+           :md "src/md/getting-started.md"
+           :tab-name :getting-started
+           :href "/examples/getting-started"
+           :subnav ["#intro"              "Intro"
+                    "#the-nsfw-namespace" "The NSFW Namespace"
+                    "#starting-an-app"    "Starting an App"
+                    "#rendering-html"     "Rendering HTML"
+                    "#app-config"         "App Config"
+                    "#static-pages"       "Static Pages"]
+           :js-entry 'nsfw-site.app.entry}
 
           {:path "autoload"
            :name "Code Reloading"
            :md "src/md/autoload.md"
-           :subnav [["#intro"       "Intro"]
-                    ["#background"  "Under The Hood"]]
+           :subnav ["#intro"       "Intro"
+                    "#background"  "Under The Hood"]
            :js-entry 'nsfw-site.app.entry
            :tab-name :autoload
            :href "/examples/autoload"}
@@ -49,10 +56,10 @@
           {:path "the-list"
            :name "The List"
            :md "src/md/the-list.md"
-           :subnav [["#intro"        "Intro"]
-                    ["#data-binding" "Data Binding"]
-                    ["#all-together" "All Together"]
-                    ["#code"         "Code"]]
+           :subnav ["#intro"        "Intro"
+                    "#data-binding" "Data Binding"
+                    "#all-together" "All Together"
+                    "#code"         "Code"]
            :js-entry 'nsfw-site.demos.thelist.main
            :tab-name :the-list
            :href "/examples/the-list"}
@@ -60,17 +67,17 @@
           {:path "the-list-redux"
            :name "The List (Redux)"
            :md "src/md/the-list-redux.md"
-           :subnav [["#intro"          "Intro"]
-                    ["#starting-small" "Starting Small"]
-                    ["#all-together"   "All Together"]
-                    ["#code"           "Code"]]
+           :subnav ["#intro"          "Intro"
+                    "#starting-small" "Starting Small"
+                    "#all-together"   "All Together"
+                    "#code"           "Code"]
            :js-entry 'nsfw-site.demos.redux.main
            :tab-name :the-list-redux
            :href "/examples/the-list-redux"}])
 
 (defn render-example-page
   [{:keys [name md subnav js-entry tab-name] :as page} nav]
-  (nsfw/render
+  (nsfw/render-html
    [:default-head]
    [:demo
     {:js-entry (or js-entry 'nsfw-site.app.entry)
