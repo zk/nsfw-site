@@ -112,10 +112,11 @@
                               (some #(= text %) @!state)
                               ($/send o [:input-error])
 
-                              :else (do
-                                      ($/send o [:reset-input])
-                                      (swap! !state (fn [items]
-                                                      (concat items [text])))))))
+                              :else
+                              (do
+                                ($/send o [:reset-input])
+                                (swap! !state (fn [items]
+                                                (concat items [text])))))))
 
       ;; Add an error class on an :input-error message
       (handle :input-error (fn [{:keys [$el]}]
