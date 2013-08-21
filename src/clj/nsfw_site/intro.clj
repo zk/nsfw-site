@@ -3,7 +3,8 @@
             [clojure.zip :as zip]
             [nsfw.html :as html]
             [nsfw.util :as util]
-            [nsfw]))
+            [nsfw]
+            [hickory.core :as hi]))
 
 (defn escape [s]
   (-> s
@@ -54,7 +55,9 @@
     (when src
       (-> src
           slurp
-          html/markdown))]])
+          html/markdown
+          hi/parse
+          hi/as-hiccup))]])
 
 (defn sym->js [sym]
   (-> sym
