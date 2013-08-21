@@ -5,4 +5,5 @@
 (defn -main [& args]
   (nsfw/app :repl-port (env/int :repl-port 7888)
             :server-port (env/int :port 8080)
-            :autoload "src/clj/nsfw_site"))
+            :autoload "src/clj/nsfw_site"
+            :debug-exceptions true))
