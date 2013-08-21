@@ -23,7 +23,7 @@
       [:li {:class (when (= :home active-tab) "active")}
        [:a {:href "/"} "Home"]]
       [:li {:class (when (= :examples active-tab) "active")}
-       [:a {:href "/examples/config"} "Examples"]]]]))
+       [:a {:href "/examples/getting-started"} "Examples"]]]]))
 
 (nsfw/defcomp default-head [{:keys [title]} body]
   [:head
