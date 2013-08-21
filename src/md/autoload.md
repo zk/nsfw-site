@@ -19,9 +19,12 @@ of metadata to a defn. These two are roughly equivalent:
 
 We try to work with what Clojure provides, when possible.
 
-You have to **specify an `:autoload` path when starting a NSFW app
-using the `nsfw/app` function for these routes, components, etc to
-work correctly**.
+
+<div class="callout">
+  You have to specify an <code>:autoload</code>
+  path when starting an app via <code>nsfw/app</code> function for
+  routes, components, etc to work correctly.
+</div>
 
 ## Under The Hood <a id="background"></a>
 
