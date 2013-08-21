@@ -106,12 +106,15 @@ full HTML blocks on rendering. Here's an example from this site, the
 NSFW Components are very much in the spirit of Google's Web
 Components, but much more rudamentary.
 
+Components you define are available site-wide for server-rendered
+content. We'll add some sort of namespacing in the future.
+
     ;; Component definition
-    (nsfw/defcomp markdown [{:keys [src]} _]
+    (nsfw/defcomp markdown [opts body]
       [:div.row
        [:div.col-lg-12
-        (when src
-          (-> src
+        (when (:src opts)
+          (-> (:src opts)
               slurp
               html/markdown))]])
 
@@ -119,11 +122,26 @@ Components, but much more rudamentary.
     (nsfw/render-html
       [:markdown {:src "src/md/styleguide-demo.md"}])
 
+Takes the contents of `src/md/styleguide-demo.md`:
 
-And the rendered output:
+    ## Hey there!
+
+    This content is contained in `src/md/styleguide-demo.md`. **Neat!**
+
+And renders the output:
+
 <div class="example">
 <markdown src="src/md/styleguide-demo.md"></markdown>
 </div>
+
+`nsfw/defcomp` takes two arguments, `opts` and `body` (call them
+whatever you want), and mimics Hiccup-style syntax: elements are
+defined using vectors with a keyword as the tag, an optional
+attributes map, and a body (`[:tag attributes body]`).
+
+Components are useful for keeping your rendering code tidy, by helping
+you to think in chunks of logical HTML blocks, and as a bonus, let you
+generate a [styleguide for your app](/styleguide), pretty much for free.
 
 
 
