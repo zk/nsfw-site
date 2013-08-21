@@ -97,7 +97,7 @@ server's port is set from an environment variable.
               :autoload "src/clj")
 
 
-### Components
+### Components <a id="components"></a>
 
 Components are custom html snippets you define that expand out into
 full HTML blocks on rendering. Here's an example from this site, the
@@ -140,8 +140,8 @@ defined using vectors with a keyword as the tag, an optional
 attributes map, and a body (`[:tag attributes body]`).
 
 Components are useful for keeping your rendering code tidy, by helping
-you to think in chunks of logical HTML blocks, and as a bonus, let you
-generate a [styleguide for your app](/styleguide), pretty much for free.
+you to think in chunks of logical HTML blocks. As a bonus you get a
+[styleguide for your app](/styleguide), pretty much for free.
 
 
 

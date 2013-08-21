@@ -44,6 +44,7 @@
                     "#starting-an-app"    "Starting an App"
                     "#rendering-html"     "Rendering HTML"
                     "#app-config"         "App Config"
+                    "#components"         "Components"
                     "#static-pages"       "Static Pages"]
            :js-entry 'nsfw-site.app.entry}
 
