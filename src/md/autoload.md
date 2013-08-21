@@ -9,12 +9,12 @@ of metadata to a defn. These two are roughly equivalent:
 
     (nsfw/defroute "/foo/bar"
       foo-bar [r]
-      (nsfw/render
+      (nsfw/render-html
         [:h1 "hello world"]))
 
     (defn ^{:route "/foo/bar"}
       foo-bar [r]
-      (nsfw/render
+      (nsfw/render-html
         [:h1 "hello world"]))
 
 We try to work with what Clojure provides, when possible.
