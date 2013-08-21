@@ -142,3 +142,11 @@ To see this in action, try adding a blank or dupliate todo item.
 ## Transitions as Data
 
 ## Overkill? Nah, understandability.
+
+
+## Constraints
+
+Make it easy to do the Right Thing(tm), don't prevent doing the Wrong Thing(tm).
+
+1. Events should only send messages
+2. Handlers should do either data transformations or dom transformations (not both?)
