@@ -2,7 +2,9 @@
   :description "NSFW overview / docs / demo"
   :min-lein-version "2"
   :dependencies [[org.clojure/clojure "1.5.1"]
-                 [nsfw "0.6.11"]]
+                 [nsfw "0.6.11"]
+
+                 [hickory "0.3.0"]]
   :source-paths ["src/clj"]
   :test-paths ["test/clj"]
   :plugins [[lein-cljsbuild "0.3.2"]]
